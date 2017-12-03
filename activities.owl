@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1">
+    <Prefix name="" IRI="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Addings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAdding"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ADLActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Milk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sugar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MakeCoffee"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kitchen"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasContainer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Container"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FunctionalADLActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Coffee"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Objects"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MakeDrink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BathroomADL"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MakeHotDrink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BasicADLActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BrushTeeth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DrinkType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MakeTea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mug"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasHotDrinkType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#KitchenADL"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Addings"/>
+        <Class IRI="#Objects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BasicADLActivity"/>
+        <Class IRI="#ADLActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BathroomADL"/>
+        <Class IRI="#BasicADLActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BrushTeeth"/>
+        <Class IRI="#BathroomADL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Coffee"/>
+        <Class IRI="#DrinkType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Container"/>
+        <Class IRI="#Objects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cup"/>
+        <Class IRI="#Container"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DrinkType"/>
+        <Class IRI="#Objects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FunctionalADLActivity"/>
+        <Class IRI="#ADLActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kitchen"/>
+        <Class IRI="#Location"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KitchenADL"/>
+        <Class IRI="#FunctionalADLActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KitchenADL"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasLocation"/>
+            <Class IRI="#Kitchen"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Location"/>
+        <Class IRI="#Objects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <Class IRI="#MakeHotDrink"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <Class IRI="#Milk"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasContainer"/>
+            <Class IRI="#Mug"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasHotDrinkType"/>
+            <Class IRI="#Coffee"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeCoffee"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <ObjectUnionOf>
+                <Class IRI="#Milk"/>
+                <Class IRI="#Sugar"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeDrink"/>
+        <Class IRI="#KitchenADL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeHotDrink"/>
+        <Class IRI="#MakeDrink"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeHotDrink"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasContainer"/>
+            <ObjectUnionOf>
+                <Class IRI="#Cup"/>
+                <Class IRI="#Mug"/>
+            </ObjectUnionOf>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <Class IRI="#MakeHotDrink"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <Class IRI="#Milk"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <Class IRI="#Sugar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasContainer"/>
+            <Class IRI="#Cup"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasHotDrinkType"/>
+            <Class IRI="#Tea"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MakeTea"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasAdding"/>
+            <ObjectUnionOf>
+                <Class IRI="#Milk"/>
+                <Class IRI="#Sugar"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Milk"/>
+        <Class IRI="#Addings"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mug"/>
+        <Class IRI="#Container"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sugar"/>
+        <Class IRI="#Addings"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tea"/>
+        <Class IRI="#DrinkType"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#BasicADLActivity"/>
+        <Class IRI="#FunctionalADLActivity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#MakeCoffee"/>
+        <Class IRI="#MakeTea"/>
+    </DisjointClasses>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAdding"/>
+        <Class IRI="#MakeHotDrink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasContainer"/>
+        <Class IRI="#MakeDrink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasHotDrinkType"/>
+        <Class IRI="#MakeDrink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasLocation"/>
+        <Class IRI="#ADLActivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAdding"/>
+        <Class IRI="#Addings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasContainer"/>
+        <Class IRI="#Container"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasHotDrinkType"/>
+        <Class IRI="#DrinkType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasLocation"/>
+        <Class IRI="#Location"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
