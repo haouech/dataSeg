@@ -174,12 +174,21 @@ public class Segmentation {
 		}
 	}
 	
-	public Set<OWLClass> DLQuery(String query, OWLOntology o) {
+	public Set<OWLClass> DLQueryEquivalentClasses(String query, OWLOntology o) {
 		Reasoner reasoner = new Reasoner(o);	
 		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
 		DLQueryPrinter dlQueryPrinter = new DLQueryPrinter(new DLQueryEngine(reasoner, shortFormProvider), 
 															shortFormProvider);	     
-		Set<OWLClass> set = dlQueryPrinter.askQuery(query);
+		Set<OWLClass> set = dlQueryPrinter.getEquivalentClasses(query);
+		return set;
+	}
+	
+	public Set<OWLClass> DLQuerySubClasses(String query, OWLOntology o) {
+		Reasoner reasoner = new Reasoner(o);	
+		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
+		DLQueryPrinter dlQueryPrinter = new DLQueryPrinter(new DLQueryEngine(reasoner, shortFormProvider), 
+															shortFormProvider);	     
+		Set<OWLClass> set = dlQueryPrinter.getSubClasses(query);
 		return set;
 	}
 
@@ -279,25 +288,18 @@ public class Segmentation {
 	}
 
 	private void attemptExpansion(Window w, Ontology o, Activity activity) {
-		if(activity.isSpecific()) {
-			if (!activity.isAsserted() && activity.getTimeToComplete() > w.pendingTime())
-			{
-				w.expand(activity.getTimeToComplete() - w.pendingTime());
-			}
+		if(activity.isSpecific() && !activity.isAsserted() && 
+				activity.getTimeToComplete() > w.pendingTime()){
+			w.expand(activity.getTimeToComplete() - w.pendingTime());
 		}
-		else 
-		{
-			if(o.getSensorSet().size()>0) 
+		else if(o.getSensorSet().size()>0) {
+			List<Subclass> subclasses = obtainSubClasses(activity);
+			double maxDuration = getMaxDuration(subclasses);
+			double remainingDuration = w.getStartTime()+maxDuration-System.currentTimeMillis();
+			if(remainingDuration >= w.pendingTime()) 
 			{
-				List<Subclass> subclasses = obtainSubClasses(activity);
-				double maxDuration = getMaxDuration(subclasses);
-				double remainingDuration = w.getStartTime()+maxDuration-System.currentTimeMillis();
-				if(remainingDuration >= w.pendingTime()) 
-				{
-					w.expand(remainingDuration - w.pendingTime());
-				}
+				w.expand(remainingDuration - w.pendingTime());
 			}
-			
 		}
 	}
 	
@@ -318,20 +320,11 @@ public class Segmentation {
 	}
 
 	private boolean attemptShrink(Window w, Ontology o, Activity activity) {
-		if(activity.isAsserted())
-		{
+		if(activity.isAsserted() || activity.isExhausted()) {
 			w.shrink();
 			return true;
-		}
-		else if(activity.isExhausted())
-		{
-			w.shrink();
-			return true;
-		}
-		else 
-		{
-			if(activity.getTimeToComplete() >= w.pendingTime()) 
-			{
+		} else {
+			if(activity.getTimeToComplete() >= w.pendingTime()) {
 				attemptExpansion(w, o, activity);
 			}
 			return false;
@@ -342,13 +335,23 @@ public class Segmentation {
 		List<Activity> activities = new ArrayList<Activity>();
 		for (String s : dataSet) {
 			String[] parts = s.split("@");
+			String time = parts[1];
 			String sensor = parts[0]; 
-			String duration = parts[1]; 
-			assertProperty(sensor, duration);
+//			String state = parts[2];
+			assertProperty(sensor, time);
 		}	
 		String query = getQuery();
-		Set<OWLClass> res = DLQuery(query, ontology);
-		for(OWLClass c : res) {
+		Set<OWLClass> equivalentClasses = DLQueryEquivalentClasses(query, ontology);
+		if(equivalentClasses.size() > 0) {
+			OWLClass c = equivalentClasses.iterator().next();
+			Activity activity = new Activity(c.getIRI().getFragment());
+			activity.setAsserted(true);
+			activity.setSpecific(true);
+			activities.add(activity);
+			return activities;
+		}
+		Set<OWLClass> subClasses = DLQuerySubClasses(query, ontology);
+		for(OWLClass c : subClasses) {
 			Activity activity = new Activity(c.getIRI().getFragment());
 			OWLClass cl = factory.getOWLClass(IRI.create(documentIRI + "#" + activity.getLabel()));
 			NodeSet<OWLClass> classes = reasoner.getSubClasses(cl, false);

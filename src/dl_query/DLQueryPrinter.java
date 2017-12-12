@@ -29,37 +29,51 @@ public class DLQueryPrinter {
     /**
      * @param classExpression the class expression to use for interrogation
      */
-    public Set<OWLClass> askQuery(String classExpression) {
-        if (classExpression.length() == 0) {
+    public Set<OWLClass> getSubClasses(String query) {
+        if (query.length() == 0) {
             System.out.println("No class expression specified");
         } else {
             try {
                 StringBuilder sb = new StringBuilder();
                 sb.append("\n--------------------------------------------------------------------------------\n");
                 sb.append("QUERY:   ");
-                sb.append(classExpression);
+                sb.append(query);
                 sb.append("\n");
                 sb.append("--------------------------------------------------------------------------------\n\n");
-                // Ask for the subclasses, superclasses etc. of the specified
-                // class expression. Print out the results.
-//                Set<OWLClass> set = dlQueryEngine.getSuperClasses(
-//                        classExpression, true);
-                Set<OWLClass> superClasses = dlQueryEngine.getSuperClasses(
-                        classExpression, true);
-//                printEntities("SuperClasses", superClasses, sb);
-                Set<OWLClass> equivalentClasses = dlQueryEngine
-                        .getEquivalentClasses(classExpression);
-               // set.addAll(equivalentClasses);
-//                printEntities("EquivalentClasses", equivalentClasses, sb);
+                // Ask for the subclasses of the specified
+                // class expression.
                 Set<OWLClass> subClasses = dlQueryEngine.getSubClasses(
-                        classExpression, true);
+                		query, true);
 //                set.addAll(subClasses);
 //                printEntities("SubClasses", subClasses, sb);
-                Set<OWLNamedIndividual> individuals = dlQueryEngine
-                        .getInstances(classExpression, true);
-//                printEntities("Instances", individuals, sb);
 //                System.out.println(sb.toString());
                 return subClasses;
+            } catch (ParserException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+		return null;
+    }
+
+    /**
+     * @param classExpression the class expression to use for interrogation
+     */
+    public Set<OWLClass> getEquivalentClasses(String query) {
+        if (query.length() == 0) {
+            System.out.println("No class expression specified");
+        } else {
+            try {
+                StringBuilder sb = new StringBuilder();
+                sb.append("\n--------------------------------------------------------------------------------\n");
+                sb.append("QUERY:   ");
+                sb.append(query);
+                sb.append("\n");
+                sb.append("--------------------------------------------------------------------------------\n\n");
+                // Ask for the equivalent classes of the specified
+                // class expression (query).
+                Set<OWLClass> equivalentClasses = dlQueryEngine
+                        .getEquivalentClasses(query);
+                return equivalentClasses;
             } catch (ParserException e) {
                 System.out.println(e.getMessage());
             }

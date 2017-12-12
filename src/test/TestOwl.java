@@ -93,7 +93,7 @@ public class TestOwl {
 	    OWLReasoner reasoner = new Reasoner.ReasonerFactory().createReasoner(pressInnovOntology);		
 		ShortFormProvider shortFormProvider = new SimpleShortFormProvider();
 		DLQueryPrinter dlQueryPrinter = new DLQueryPrinter(new DLQueryEngine(reasoner, shortFormProvider), shortFormProvider);	     
-	        dlQueryPrinter.askQuery(query);
+	        dlQueryPrinter.getSubClasses(query);
 		 
 	}
 
