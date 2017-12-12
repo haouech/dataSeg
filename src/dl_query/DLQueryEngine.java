@@ -104,6 +104,7 @@ import java.util.Set;
             if (classExpressionString.trim().length() == 0) {
                 return Collections.emptySet();
             }
+            System.out.println("SubClass: " + classExpressionString);
             OWLClassExpression classExpression = parser
                     .parseClassExpression(classExpressionString);
             NodeSet<OWLClass> subClasses = reasoner.getSubClasses(classExpression,

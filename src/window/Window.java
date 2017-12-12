@@ -2,13 +2,14 @@ package window;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Window {
 	
 	/**
 	 * start time .
 	 */
-	private long startTime;
+	private double startTime;
 	
 	/**
 	 * end time .
@@ -28,7 +29,7 @@ public class Window {
 	/**
 	 * sensor data set .
 	 */
-	private SensorDataSet set;
+	private List<String> set;
 	
 	/**
 	 * vector of activity labels .
@@ -64,20 +65,36 @@ public class Window {
 	
 	private boolean shrinkableAndExpandable;
 	
+	private Window overlappingWindow;
+	
 	
 	/**
 	 * constructor .
 	 */
-	public Window(long start, double end, double length, ReasoningMode rm, 
+	public Window(double start, double length, ReasoningMode rm, 
 			double windowFactor, double slidingFactor, double changeFactor) {
 		this.startTime = start ;
-		this.endTime = end ;
 //		this.lengthInit = length ; 
 		this.length = length ;
+		this.endTime = start+length ;
 		this.startMode = rm ;
 		this.windowFactor = windowFactor ;
 		this.slidingFactor = slidingFactor ;
 		this.changeFactor = changeFactor ;
+		set = new ArrayList<String>();
+	}
+	
+	public Window() {
+
+		this.startTime = 0 ;
+//		this.lengthInit = length ; 
+		this.length = 0 ;
+		this.endTime = 0 ;
+		this.startMode = ReasoningMode.on_sensor ;
+		this.windowFactor = 1 ;
+		this.slidingFactor = 1 ;
+		this.changeFactor = 1 ;
+		set = new ArrayList<String>();
 	}
 
 	
@@ -99,7 +116,7 @@ public class Window {
 	}
 
 
-	public long getStartTime() {
+	public double getStartTime() {
 		return startTime;
 	}
 
@@ -123,13 +140,7 @@ public class Window {
 		this.length = length;
 	}
 
-	public SensorDataSet getSet() {
-		return set;
-	}
-
-	public void setSet(SensorDataSet set) {
-		this.set = set;
-	}
+	
 
 	public List<String> getActivityLabels() {
 		return activityLabels;
@@ -211,5 +222,29 @@ public class Window {
 	
 	public void shrink() {
 		this.endTime = System.currentTimeMillis();
+	}
+
+
+	public Window getOverlappingWindow() {
+		return overlappingWindow;
+	}
+
+
+	public void setOverlappingWindow(Window overlappingWindow) {
+		this.overlappingWindow = overlappingWindow;
+	}
+
+
+	public List<String> getSet() {
+		return set;
+	}
+
+
+	public void setSet(List<String> set) {
+		this.set = set;
+	}
+	
+	public void addSensor(String sensor) {
+		set.add(sensor);
 	}
 }

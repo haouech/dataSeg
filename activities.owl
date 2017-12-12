@@ -19,6 +19,9 @@
         <ObjectProperty IRI="#hasLocation"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#CookMeal"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasAdding"/>
     </Declaration>
     <Declaration>
@@ -40,10 +43,10 @@
         <Class IRI="#Kitchen"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasContainer"/>
+        <Class IRI="#Container"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Container"/>
+        <ObjectProperty IRI="#hasContainer"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Tea"/>
@@ -58,10 +61,10 @@
         <Class IRI="#Objects"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#MakeDrink"/>
+        <Class IRI="#BathroomADL"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#BathroomADL"/>
+        <Class IRI="#MakeDrink"/>
     </Declaration>
     <Declaration>
         <Class IRI="#MakeHotDrink"/>
@@ -113,6 +116,10 @@
     <SubClassOf>
         <Class IRI="#Container"/>
         <Class IRI="#Objects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CookMeal"/>
+        <Class IRI="#KitchenADL"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Cup"/>

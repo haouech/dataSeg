@@ -29,7 +29,7 @@ public class DLQueryPrinter {
     /**
      * @param classExpression the class expression to use for interrogation
      */
-    public void askQuery(String classExpression) {
+    public Set<OWLClass> askQuery(String classExpression) {
         if (classExpression.length() == 0) {
             System.out.println("No class expression specified");
         } else {
@@ -42,23 +42,29 @@ public class DLQueryPrinter {
                 sb.append("--------------------------------------------------------------------------------\n\n");
                 // Ask for the subclasses, superclasses etc. of the specified
                 // class expression. Print out the results.
+//                Set<OWLClass> set = dlQueryEngine.getSuperClasses(
+//                        classExpression, true);
                 Set<OWLClass> superClasses = dlQueryEngine.getSuperClasses(
                         classExpression, true);
-                printEntities("SuperClasses", superClasses, sb);
+//                printEntities("SuperClasses", superClasses, sb);
                 Set<OWLClass> equivalentClasses = dlQueryEngine
                         .getEquivalentClasses(classExpression);
-                printEntities("EquivalentClasses", equivalentClasses, sb);
+               // set.addAll(equivalentClasses);
+//                printEntities("EquivalentClasses", equivalentClasses, sb);
                 Set<OWLClass> subClasses = dlQueryEngine.getSubClasses(
                         classExpression, true);
-                printEntities("SubClasses", subClasses, sb);
+//                set.addAll(subClasses);
+//                printEntities("SubClasses", subClasses, sb);
                 Set<OWLNamedIndividual> individuals = dlQueryEngine
                         .getInstances(classExpression, true);
-                printEntities("Instances", individuals, sb);
-                System.out.println(sb.toString());
+//                printEntities("Instances", individuals, sb);
+//                System.out.println(sb.toString());
+                return subClasses;
             } catch (ParserException e) {
                 System.out.println(e.getMessage());
             }
         }
+		return null;
     }
 
     private void printEntities(String name, Set<? extends OWLEntity> entities,

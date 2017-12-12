@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1"
+     xml:base="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Addings"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasContainer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasContainer">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Container"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasHotDrinkType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasHotDrinkType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#DrinkType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasDurationInMin -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasDurationInMin">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Addings -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Addings">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BasicADLActivity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BasicADLActivity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#FunctionalADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Bathroom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Bathroom">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BathroomADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BathroomADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BasicADLActivity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasLocation"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Bathroom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BrushTeeth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BrushTeeth">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#BathroomADL"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Coffee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Coffee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#DrinkType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Container -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Container">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Cup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Cup">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#DrinkType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#DrinkType">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#FunctionalADLActivity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#FunctionalADLActivity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#ADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Kitchen -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Kitchen">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#KitchenADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#KitchenADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#FunctionalADLActivity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasLocation"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Kitchen"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Location">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeCoffee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeCoffee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeHotDrink"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasContainer"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Mug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasHotDrinkType"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Coffee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeTea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeDrink -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeDrink">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#KitchenADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasContainer"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Cup"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Mug"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeHotDrink -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeHotDrink">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeDrink"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeTea -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeTea">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#MakeHotDrink"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasContainer"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Cup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasHotDrinkType"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Tea"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#hasAdding"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Milk">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Addings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Mug -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Mug">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Objects"/>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Sugar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Addings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Tea -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#Tea">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1#DrinkType"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
