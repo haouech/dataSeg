@@ -2,23 +2,55 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/ASR/PFE/owlapi/owlapi-dependencypack-3.5.6/lib/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/ASR/PFE/owlapi/owlapi-dependencypack-3.5.6/lib/owlapi-distribution-3.5.6.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/ASR/PFE/owlapi/owlapi-dependencypack-3.5.6/lib/trove4j-3.0.3.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/ASR/PFE/HermiT/HermiT.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/ASR/PFE/HermiT/org.semanticweb.HermiT.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/jena-2.6.2-tests.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/jena-2.6.2.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/arq-2.8.1.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/lucene-core-2.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/wstx-asl-3.2.9.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/iri-0.7.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/log4j-1.2.13.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/slf4j-log4j12-1.5.6.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/icu4j-3.4.4.jar"/>
-	<classpathentry kind="lib" path="/home/haouech/workspace/TPJena/Jena-2.6.2/lib/xercesImpl-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/HermiT/org.semanticweb.HermiT.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/HermiT/HermiT.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/guice-4.0-beta.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/guice-multibindings-4.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/httpclient-4.5.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/httpclient-cache-4.5.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jackson-annotations-2.6.3.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jackson-core-2.6.3.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jackson-databind-2.6.3.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jsonld-java-0.5.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jsonld-java-sesame-0.5.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/jsr305-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/log4j-over-slf4j-1.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/org.apache.commons.io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/semargl-core-0.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/semargl-rdf-0.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/semargl-rdfa-0.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/semargl-sesame-0.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-model-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-api-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-binary-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-datatypes-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-languages-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-n3-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-nquads-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-ntriples-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-rdfjson-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-rdfxml-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-trig-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-trix-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-rio-turtle-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/sesame-util-2.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/slf4j-api-1.7.10.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/slf4j-nop-1.7.10.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/Dependencias extras/trove4j-3.0.3.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/guice-assistedinject-4.0.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/owlapi343src.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/owlapi-distribution-3.4.3-bin.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/pellet.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/pellet-jena-2.3.3.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/jena-core-2.10.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/jena-2.1.jar"/>
+	<classpathentry kind="lib" path="/home/asma/programs/arq-fix.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
