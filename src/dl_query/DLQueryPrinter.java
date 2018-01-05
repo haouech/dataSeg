@@ -6,6 +6,7 @@ import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -32,6 +33,7 @@ public class DLQueryPrinter {
     public Set<OWLClass> getSubClasses(String query) {
         if (query.length() == 0) {
             System.out.println("No class expression specified");
+            return new HashSet<OWLClass>();
         } else {
             try {
                 StringBuilder sb = new StringBuilder();
@@ -52,7 +54,7 @@ public class DLQueryPrinter {
                 System.out.println(e.getMessage());
             }
         }
-		return null;
+        return new HashSet<OWLClass>();
     }
 
     /**
@@ -61,24 +63,24 @@ public class DLQueryPrinter {
     public Set<OWLClass> getEquivalentClasses(String query) {
         if (query.length() == 0) {
             System.out.println("No class expression specified");
-        } else {
-            try {
-                StringBuilder sb = new StringBuilder();
-                sb.append("\n--------------------------------------------------------------------------------\n");
-                sb.append("QUERY:   ");
-                sb.append(query);
-                sb.append("\n");
-                sb.append("--------------------------------------------------------------------------------\n\n");
-                // Ask for the equivalent classes of the specified
-                // class expression (query).
-                Set<OWLClass> equivalentClasses = dlQueryEngine
-                        .getEquivalentClasses(query);
-                return equivalentClasses;
-            } catch (ParserException e) {
-                System.out.println(e.getMessage());
-            }
+            return new HashSet<OWLClass>();
         }
-		return null;
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n--------------------------------------------------------------------------------\n");
+            sb.append("QUERY:   ");
+            sb.append(query);
+            sb.append("\n");
+            sb.append("--------------------------------------------------------------------------------\n\n");
+            // Ask for the equivalent classes of the specified
+            // class expression (query).
+            Set<OWLClass> equivalentClasses = dlQueryEngine
+                    .getEquivalentClasses(query);
+            return equivalentClasses;
+        } catch (ParserException e) {
+            System.out.println(e.getMessage());
+        }
+        return new HashSet<OWLClass>();
     }
 
     private void printEntities(String name, Set<? extends OWLEntity> entities,

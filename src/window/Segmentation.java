@@ -85,90 +85,75 @@ public class Segmentation {
 		return indiv;
 	}
 	
-	public void assertProperty(String sensor, String duration) {
-//		String[] parts = data.split("@");
-//		String sensor = parts[0]; 
-//		String duration = parts[1]; 
-		
-//		OWLIndividual indiv = factory.getOWLNamedIndividual(IRI.create(documentIRI+"#ADLActivity"));
-		
+	public void addProperty(String sensor, String duration) {
 		OWLClass cls = factory.getOWLClass(IRI.create(documentIRI+"#"+sensor));
 		Set<OWLClass> set = reasoner.getSuperClasses(cls, true).getFlattened();
 		// à voir!!!
 		for (OWLClass c : set) {
-			if(c.getIRI().getFragment().equals("Location")) {
-				OWLIndividual loc = createIndividual(sensor+id, sensor);
-				id++;
-				OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
-			            .create(documentIRI + "#hasDuration"));
-				OWLDataPropertyAssertionAxiom axiom2 = factory
-				            .getOWLDataPropertyAssertionAxiom(hasDuration, loc, duration);
-				    
-				OWLObjectProperty hasLocation = factory.getOWLObjectProperty(IRI
-			            .create(documentIRI + "#hasLocation"));
-				OWLObjectPropertyAssertionAxiom axiom1 = factory
-			            .getOWLObjectPropertyAssertionAxiom(hasLocation, indiv, loc);
-				AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
-			    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
+			String type = c.getIRI().getFragment();
+			if(type.equals("Addings")) {
+				type = "Adding";
+			} else if(type.equals("DrinkType")) {
+				type = "HotDrinkType";
+			}
+			OWLIndividual loc = createIndividual(sensor+id, sensor);
+			id++;
+			OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
+		            .create(documentIRI + "#hasDuration"));
+			OWLDataPropertyAssertionAxiom axiom2 = factory
+			            .getOWLDataPropertyAssertionAxiom(hasDuration, loc, duration);
+			    
+			OWLObjectProperty hasLocation = factory.getOWLObjectProperty(IRI
+		            .create(documentIRI + "#has" + type));
+			OWLObjectPropertyAssertionAxiom axiom1 = factory
+		            .getOWLObjectPropertyAssertionAxiom(hasLocation, indiv, loc);
+			AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
+		    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
 
-			    // Now we apply the change using the manager.
-			    manager.applyChange(addAxiom1);
-			    manager.applyChange(addAxiom2);
-//			    properties.add("hasLocation "+sensor);
-			    unique_properties.put("hasLocation some ", sensor);
+		    // Now we apply the change using the manager.
+		    manager.applyChange(addAxiom1);
+		    manager.applyChange(addAxiom2);
+			if(type.equals("Location")) {
+				unique_properties.put("hasLocation some ", sensor);
+				System.out.println("hasLocation some " + sensor);
+			} else {
+				properties.add("has" + type + " some "+sensor);
+				System.out.println("has" + type + " some " + sensor);
 			}
-			else if(c.getIRI().getFragment().equals("Addings")) {
-				OWLIndividual add = createIndividual(sensor+id, sensor);
-				id++;
-				OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
-			            .create(documentIRI + "#hasDuration"));
-				OWLDataPropertyAssertionAxiom axiom2 = factory
-				            .getOWLDataPropertyAssertionAxiom(hasDuration, add, duration);
-				OWLObjectProperty hasAdding = factory.getOWLObjectProperty(IRI
-			            .create(documentIRI + "#hasAdding"));
-				OWLObjectPropertyAssertionAxiom axiom1 = factory
-			            .getOWLObjectPropertyAssertionAxiom(hasAdding, indiv, add);
-				AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
-			    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
-			    // Now we apply the change using the manager.
-			    manager.applyChange(addAxiom1);
-			    manager.applyChange(addAxiom2);
-			    properties.add("hasAdding some "+sensor);
+		}
+	}
+	public void deleteProperty(String sensor, String duration) {
+		OWLClass cls = factory.getOWLClass(IRI.create(documentIRI+"#"+sensor));
+		Set<OWLClass> set = reasoner.getSuperClasses(cls, true).getFlattened();
+		// à voir!!!
+		for (OWLClass c : set) {
+			String type = c.getIRI().getFragment();
+			if(type.equals("Addings")) {
+				type = "Adding";
+			} else if(type.equals("DrinkType")) {
+				type = "HotDrinkType";
 			}
-			else if(c.getIRI().getFragment().equals("DrinkType")) {
-				OWLIndividual DrinkType = createIndividual(sensor+id, sensor);
-				id++;
-				OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
-			            .create(documentIRI + "#hasDuration"));
-				OWLDataPropertyAssertionAxiom axiom2 = factory
-				            .getOWLDataPropertyAssertionAxiom(hasDuration, DrinkType, duration);
-				OWLObjectProperty hasHotDrinkType = factory.getOWLObjectProperty(IRI
-			            .create(documentIRI + "#hasHotDrinkType"));
-				OWLObjectPropertyAssertionAxiom axiom1 = factory
-			            .getOWLObjectPropertyAssertionAxiom(hasHotDrinkType, indiv, DrinkType);
-				AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
-			    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
-			    // Now we apply the change using the manager.
-			    manager.applyChange(addAxiom1);
-			    manager.applyChange(addAxiom2);
-			    properties.add("hasHotDrinkType some "+sensor);
-			}
-			else if(c.getIRI().getFragment().equals("Container")) {
-				OWLIndividual Container = createIndividual(sensor+id, sensor);
-				id++;
-				OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
-			            .create(documentIRI + "#hasDuration"));
-				OWLDataPropertyAssertionAxiom axiom2 = factory
-				            .getOWLDataPropertyAssertionAxiom(hasDuration, Container, duration);
-				OWLObjectProperty hasContainer = factory.getOWLObjectProperty(IRI
-			            .create(documentIRI + "#hasContainer"));
-				OWLObjectPropertyAssertionAxiom axiom1 = factory
-			            .getOWLObjectPropertyAssertionAxiom(hasContainer, indiv, Container);
-				AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
-			    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
-			    manager.applyChange(addAxiom1);
-			    manager.applyChange(addAxiom2);
-			    properties.add("hasContainer some "+sensor);
+			OWLIndividual loc = createIndividual(sensor+id, sensor);
+			id++;
+			OWLDataProperty hasDuration = factory.getOWLDataProperty(IRI
+		            .create(documentIRI + "#hasDuration"));
+			OWLDataPropertyAssertionAxiom axiom2 = factory
+			            .getOWLDataPropertyAssertionAxiom(hasDuration, loc, duration);
+			    
+			OWLObjectProperty hasLocation = factory.getOWLObjectProperty(IRI
+		            .create(documentIRI + "#has" + type));
+			OWLObjectPropertyAssertionAxiom axiom1 = factory
+		            .getOWLObjectPropertyAssertionAxiom(hasLocation, indiv, loc);
+			AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
+		    AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
+
+		    // Now we apply the change using the manager.
+		    manager.applyChange(addAxiom1);
+		    manager.applyChange(addAxiom2);
+			if(type.equals("Location")) {
+				unique_properties.remove("hasLocation some ");
+			} else {
+				properties.remove("has" + type + " some "+sensor);
 			}
 		}
 	}
@@ -255,15 +240,19 @@ public class Segmentation {
 	public List<Activity> doOntologicalAR(Window w) {
 		List<Activity> list;
 		list = callOntology(w.getSet());
+		if(list.size()==0) {
+			return list;
+		}
 		if (list.size() == 1) 
 		{
-			if (list.get(0).isSpecific()) 
+			Activity currentActivity = list.get(0);
+			if (currentActivity.isSpecific()) 
 			{
-				System.out.println("activity successfully identified");
+				System.out.println("One possible activity identified");
 				if(w.isShrinkable() || w.isShrinkableAndExpandable()) {
-					if(!attemptShrink(w, o, list.get(0))) {
+					if(!attemptShrink(w, currentActivity)) {
 						System.out.println("more sensor data needed");
-						attemptExpansion(w, o, list.get(0));
+						attemptExpansion(w, currentActivity);
 					}
 				}
 			} 
@@ -271,27 +260,27 @@ public class Segmentation {
 			{
 				System.out.println("more sensor data needed");
 				if(w.isShrinkableAndExpandable()) {
-					attemptExpansion(w, o, list.get(0));
+					attemptExpansion(w, currentActivity);
 				}
 			}
 		} 
 		else 
 		{
 			//Obtain generic activity labels parent activity?????????????????
-			Activity parentActivity = list.get(0).getParent();
-			if(w.isShrinkableAndExpandable()) {
-				attemptExpansion(w, o, parentActivity);
-			}
+//			Activity parentActivity = list.get(0).getParent();
+//			if(w.isShrinkableAndExpandable()) {
+//				attemptExpansion(w, parentActivity);
+//			}
 		}
 		return list;
 	}
 
-	private void attemptExpansion(Window w, Ontology o, Activity activity) {
+	private void attemptExpansion(Window w, Activity activity) {
 		if(activity.isSpecific() && !activity.isAsserted() && 
 				activity.getTimeToComplete() > w.pendingTime()){
 			w.expand(activity.getTimeToComplete() - w.pendingTime());
 		}
-		else if(o.getSensorSet().size()>0) {
+		else if(w.getSet().size()>0) {
 			List<Subclass> subclasses = obtainSubClasses(activity);
 			double maxDuration = getMaxDuration(subclasses);
 			double remainingDuration = w.getStartTime()+maxDuration-System.currentTimeMillis();
@@ -303,12 +292,12 @@ public class Segmentation {
 	}
 	
 	private double getMaxDuration(List<Subclass> subclasses) {
+		if(subclasses == null) {
+			return 0.0;
+		}
 		double max = subclasses.get(0).getMaxDuration();
 		for(Subclass s : subclasses) {
-			if(s.getMaxDuration() > max)
-			{
-				max = s.getMaxDuration();
-			}
+			max = Math.max(max, s.getMaxDuration());
 		}
 		return max;
 	}
@@ -318,28 +307,33 @@ public class Segmentation {
 		return null;
 	}
 
-	private boolean attemptShrink(Window w, Ontology o, Activity activity) {
+	private boolean attemptShrink(Window w, Activity activity) {
 		if(activity.isAsserted() || activity.isExhausted()) {
 			w.shrink();
+			System.out.println("Activity identified: " + activity.getLabel());
 			return true;
-		} else {
-			if(activity.getTimeToComplete() >= w.pendingTime()) {
-				attemptExpansion(w, o, activity);
-			}
-			return false;
 		}
+		if(activity.getTimeToComplete() >= w.pendingTime()) {
+			attemptExpansion(w, activity);
+		}
+		return false;
 	}
 
 	public List<Activity> callOntology(List<String> dataSet) {
 		List<Activity> activities = new ArrayList<Activity>();
 		for (String s : dataSet) {
 			String[] parts = s.split("@");
-			String time = parts[1];
-			String sensor = parts[0]; 
-//			String state = parts[2];
-			assertProperty(sensor, time);
+			String time = parts[0];
+			String sensor = parts[1]; 
+			String state = parts[2];
+			if(state.equals("on")) {
+				addProperty(sensor, time);
+			} else {
+				deleteProperty(sensor, time);
+			}
 		}	
 		String query = getQuery();
+		System.out.println("Query: " + query);
 		Set<OWLClass> equivalentClasses = DLQueryEquivalentClasses(query, ontology);
 		if(equivalentClasses.size() > 0) {
 			OWLClass c = equivalentClasses.iterator().next();
@@ -363,14 +357,25 @@ public class Segmentation {
 	}
 	
 	public String getQuery() {
-		Iterator<String> it = properties.iterator();
-		//on suppose que properties n'est pas vide 
-		String query = it.next();
-		while(it.hasNext()) {
-			query = query + " and " +it.next();
+//		if(properties.size() == 0 && unique_properties.size() == 0) {
+//			return "";
+//		}
+		String query = "";
+		if(properties.size() > 0) {
+			Iterator<String> it = properties.iterator();
+			query = it.next();
+			while(it.hasNext()) {
+				query = query + " and " +it.next();
+			}			
+		}
+		if(!query.equals("")) {
+			query += " and ";
 		}
 		for(Map.Entry<String, String> entry : unique_properties.entrySet()) {
-			query += " and " + entry.getKey() + " " + entry.getValue(); 
+			query += entry.getKey() + " " + entry.getValue() + " and " ; 
+		}
+		if(query.substring(query.length()-5, query.length()).equals(" and ")) {
+			query = query.substring(0, query.length()-5);
 		}
 		return query;
 	}

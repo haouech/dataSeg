@@ -48,7 +48,7 @@ public class Activity {
 	}
 
 	public boolean isExhausted() {
-		return (startTime + duration < System.currentTimeMillis());
+		return false; //(startTime + duration < System.currentTimeMillis());
 	}
 	
 	public double getTimeToComplete() {

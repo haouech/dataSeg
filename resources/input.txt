@@ -1,1 +1,5 @@
-35346@Bathroom@on
+0@Bathroom@on
+5@Bathroom@off
+6@Kitchen@on
+7@Tea@on
+7@Milk@on

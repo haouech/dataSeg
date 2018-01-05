@@ -18,14 +18,15 @@ public class main {
         line = bufferreader.readLine();
  
         while (line != null) {     
-            line = bufferreader.readLine();
             w.addSensor(line);
+            line = bufferreader.readLine();
         }
+        bufferreader.close();
 	}
 
 	public static void main(String[] args) {
 		try {
-			String query = "";
+//			String query = "";
 			Segmentation seg = new Segmentation();
 			seg.init();
 			//call ontology à voir
@@ -37,9 +38,11 @@ public class main {
 	//		w.addSensor("Kitchen@0");
 	//		w.addSensor("Milk@0");
 			List<Activity> activities = seg.doOntologicalAR(w);
+			System.out.println("Size: " + activities.size());
 			for(Activity act : activities) {
 				System.out.println(act);
 			}
+		/*
 			System.out.println("Second iteration");
 			w.addSensor("Tea@0");
 			activities = seg.doOntologicalAR(w);
@@ -51,7 +54,8 @@ public class main {
 			List<String> dataSet = new ArrayList<String>();
 			dataSet.add("Bathroom@0");
 			dataSet.add("Kitchen@0");
-			dataSet.add("Milk@0");
+			dataSet.add("Milk@0"); 
+		*/
 	//		List<Activity> activities = seg.callOntology(dataSet);
 			for(Activity act : activities) {
 	//			System.out.println(act);

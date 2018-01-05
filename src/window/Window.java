@@ -88,13 +88,15 @@ public class Window {
 
 		this.startTime = 0 ;
 //		this.lengthInit = length ; 
-		this.length = 0 ;
-		this.endTime = 0 ;
+		this.length = 1000 ;
+		this.endTime = startTime + length ;
 		this.startMode = ReasoningMode.on_sensor ;
 		this.windowFactor = 1 ;
 		this.slidingFactor = 1 ;
 		this.changeFactor = 1 ;
 		set = new ArrayList<String>();
+		shrinkable = true;
+		shrinkableAndExpandable = true;
 	}
 
 	
@@ -139,8 +141,6 @@ public class Window {
 	public void setLength(long length) {
 		this.length = length;
 	}
-
-	
 
 	public List<String> getActivityLabels() {
 		return activityLabels;
