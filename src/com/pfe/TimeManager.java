@@ -7,26 +7,26 @@ public class TimeManager {
 	private boolean interval = false;
 	private int intervalTime;
 	private final int INTERVAL_LENGTH = 10;
+	private final int END_TIME = 1000;
 	
 	public TimeManager() {
 		this.currentTime = 0;
-		this.endTime = 1000;
+		this.endTime = END_TIME;
 		this.interval = false;
 		this.intervalTime = 0;
 	}
 	
 	public TimeManager(int time) {
+		this();
 		this.currentTime = time;
-		this.endTime = 1000;
-		this.interval = false;
-		this.intervalTime = 0;
+		this.endTime = currentTime + END_TIME;
 	}
 	
 	public TimeManager(int time, int endTime) {
-		this.currentTime = time;
-		this.endTime = endTime;
-		interval = false;
-		this.intervalTime = 0;
+		this(time);
+		if(endTime >= this.currentTime) {
+			this.endTime = endTime;
+		}
 	}
 	
 	public boolean advanceTime() {
@@ -37,6 +37,7 @@ public class TimeManager {
 		intervalTime++;
 		if(intervalTime >= INTERVAL_LENGTH) {
 			interval  = true;
+			intervalTime = 0;
 		}
 		if(currentTime > endTime) {
 			return false;
@@ -55,6 +56,7 @@ public class TimeManager {
 		intervalTime += (time - currentTime);
 		if(intervalTime >= INTERVAL_LENGTH) {
 			interval  = true;
+			intervalTime = 0;
 		}
 		if(!isStillRunning()) {
 			return false;
