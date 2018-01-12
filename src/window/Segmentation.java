@@ -117,7 +117,7 @@ public class Segmentation {
 				unique_properties.put("hasLocation some ", sensor);
 				System.out.println("hasLocation some " + sensor);
 			} else {
-				properties.add("has" + type + " some "+sensor);
+				properties.add("has" + type + " some " + sensor);
 				System.out.println("has" + type + " some " + sensor);
 			}
 		}

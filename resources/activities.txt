@@ -1,0 +1,3 @@
+makeTea:50
+makeCoffee:70
+brushTeeth:30
