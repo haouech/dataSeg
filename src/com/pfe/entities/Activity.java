@@ -17,7 +17,14 @@ public class Activity {
 		this.specific = false;
 		this.asserted = false;
 	}
+
+	public int getStartTime(int time) {
+		return this.startTime;
+	}
 	
+	public void setStartTime(int time) {
+		this.startTime = time;
+	}
 
 	public int getDuration() {
 		return duration;

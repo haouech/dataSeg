@@ -34,6 +34,7 @@ public class OntologyManager {
 	private OWLOntology ontology;
 	private OWLDataFactory factory;
 	private Reasoner reasoner;
+	private TimeManager timeManager;
 	
 	public Map<String, String> unique_properties = new HashMap<String, String>();
 	public Set<String> properties = new HashSet<String>();
@@ -61,6 +62,7 @@ public class OntologyManager {
 		}
 		factory = manager.getOWLDataFactory();
 		reasoner = new Reasoner(ontology);
+		timeManager = TimeManager.getInstance();
 	}
 	
 	public static OntologyManager getInstance() {
@@ -89,6 +91,7 @@ public class OntologyManager {
 		if(equivalentClasses.size() > 0) {
 			OWLClass c = equivalentClasses.iterator().next();
 			Activity activity = new Activity(c.getIRI().getFragment());
+			activity.setStartTime(timeManager.getCurrentTime());
 			activity.setAsserted(true);
 			activity.setSpecific(true);
 			activities.add(activity);
@@ -97,6 +100,7 @@ public class OntologyManager {
 		Set<OWLClass> subClasses = querySubClasses(query, ontology);
 		for(OWLClass c : subClasses) {
 			Activity activity = new Activity(c.getIRI().getFragment());
+			activity.setStartTime(timeManager.getCurrentTime());
 			NodeSet<OWLClass> classes = reasoner.getSubClasses(c, false);
 			if(classes.getFlattened().size() == 1) {
 				activity.setSpecific(true);

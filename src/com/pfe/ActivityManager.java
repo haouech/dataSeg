@@ -13,7 +13,7 @@ public class ActivityManager {
 	
 	private Map<String, Integer> activityToLength;
 	
-	public ActivityManager() {
+	private ActivityManager() {
 		this.activityToLength = readLine("resources/activities.txt");
 	}
 	
@@ -31,7 +31,6 @@ public class ActivityManager {
 		try {
 			bufferReader = new BufferedReader(new FileReader(file));
 			for(line = bufferReader.readLine(); line != null; line = bufferReader.readLine()) {
-	        	line = bufferReader.readLine();
 	        	String[] parts = line.split(":");
 	        	String label = parts[0];
 	        	String Activitylength = parts[1];

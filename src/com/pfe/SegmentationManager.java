@@ -19,7 +19,7 @@ public class SegmentationManager {
 	
 	public SegmentationManager() {
 		ontologyManager = OntologyManager.getInstance();
-		timeManager = new TimeManager();
+		timeManager = TimeManager.getInstance();
 		dataManager = DataManager.getInstance();
 	}
 	
@@ -33,7 +33,7 @@ public class SegmentationManager {
 		while (timeManager.isStillRunning()) 
 		{
 			Set<Activity> activitiesForCurrentWindow = new HashSet<>();
-			while (currentWindow.getEndTime() > timeManager.getCurrentTime())
+			while (timeManager.isStillRunning() && currentWindow.getEndTime() > timeManager.getCurrentTime())
 			{
 				//Lecture du dataSet 
 				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
@@ -71,7 +71,7 @@ public class SegmentationManager {
 //			discardPreviousSensorActivation();
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			currentWindow.setActive(false);
-			ontologyManager = OntologyManager.getInstance();
+			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
 		}
