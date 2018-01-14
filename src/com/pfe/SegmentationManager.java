@@ -16,10 +16,12 @@ public class SegmentationManager {
 
 	private OntologyManager ontologyManager;
 	private TimeManager timeManager;
+	private DataManager dataManager;
 	
 	public SegmentationManager() {
-		ontologyManager = OntologyManager.getOntologyManager();
+		ontologyManager = OntologyManager.getInstance();
 		timeManager = new TimeManager();
+		dataManager = DataManager.getInstance();
 	}
 	
 	public void recognizeADL(int start, int length) {
@@ -46,6 +48,7 @@ public class SegmentationManager {
 					activitiesForCurrentWindow.addAll(res);
 				}
 				timeManager.advanceTime();
+				// TODO: Handle data input
 			}
 			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) 
 			{
@@ -54,12 +57,10 @@ public class SegmentationManager {
 			}
 //			discardPreviousSensorActivation();
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
-			//If overlapping true 
-			if(currentWindow.getSlidingFactor() == 1) {
-				currentWindow.setActive(false);
-				currentWindow = new Window(timeManager.getCurrentTime(), length);
-				ontologyManager = OntologyManager.getOntologyManager();
-			}
+			currentWindow.setActive(false);
+			ontologyManager = OntologyManager.getInstance();
+			currentWindow = new Window(timeManager.getCurrentTime(), length);
+			currentWindow.setActive(true);
 		}
 	}
 	

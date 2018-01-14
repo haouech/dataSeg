@@ -93,7 +93,7 @@ public class Window {
 		this.shrinkable = true;
 		this.expandable = true;
 		this.active = false;
-		ontologyManager = OntologyManager.getOntologyManager();
+		ontologyManager = OntologyManager.getInstance();
 	}
 	public Window(int start, int length) {
 		this();

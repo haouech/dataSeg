@@ -63,7 +63,7 @@ public class OntologyManager {
 		reasoner = new Reasoner(ontology);
 	}
 	
-	public static OntologyManager getOntologyManager() {
+	public static OntologyManager getInstance() {
 		if(instance == null) {
 			instance = new OntologyManager();
 		}
@@ -178,6 +178,11 @@ public class OntologyManager {
 	public Set<OWLClass> getActivitySubClasses(Activity activity) {
 		OWLClass classe = factory.getOWLClass(IRI.create(documentIRI + activity.getLabel()));
 		return reasoner.getSubClasses(classe, true).getFlattened();
+	}
+	
+	public void clearData() {
+		unique_properties.clear();
+		properties.clear();
 	}
 	
 }

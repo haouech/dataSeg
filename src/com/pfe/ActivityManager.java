@@ -30,14 +30,14 @@ public class ActivityManager {
 		Map<String, Integer> activityToLength = new HashMap<>();
 		try {
 			bufferReader = new BufferedReader(new FileReader(file));
-	        do {
+			for(line = bufferReader.readLine(); line != null; line = bufferReader.readLine()) {
 	        	line = bufferReader.readLine();
 	        	String[] parts = line.split(":");
 	        	String label = parts[0];
 	        	String Activitylength = parts[1];
 	        	int length = Integer.parseInt(Activitylength);
 	        	activityToLength.put(label, length);
-	        } while(line != null);
+	        }
 			
 	        bufferReader.close();
 		} catch (IOException e) {
