@@ -1,5 +1,7 @@
 package com.pfe.entities;
 
+import com.pfe.ActivityManager;
+
 public class Activity {
 	
 	private boolean specific;
@@ -11,11 +13,21 @@ public class Activity {
 	public Activity(String label) {
 		this.label = label;
 		this.startTime = 0;
-		this.duration = 50;
+		this.duration = ActivityManager.getInstance().getLength(label);
 		this.specific = false;
 		this.asserted = false;
 	}
 	
+
+	public int getDuration() {
+		return duration;
+	}
+
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
 
 	public boolean isSpecific() {
 		return specific;

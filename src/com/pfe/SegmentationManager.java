@@ -16,13 +16,15 @@ public class SegmentationManager {
 
 	private OntologyManager ontologyManager;
 	private TimeManager timeManager;
+	private DataManager dataManager;
 	
 	public SegmentationManager() {
 		ontologyManager = OntologyManager.getOntologyManager();
 		timeManager = new TimeManager();
+		dataManager = new DataManager();
 	}
 	
-	public void recognizeADL(int start, int length) {
+	public void recognizeADL(int length) {
 
 		Window initWindow = new Window(timeManager.getCurrentTime(), length);
 		Window currentWindow = initWindow ;		
@@ -34,6 +36,8 @@ public class SegmentationManager {
 			Set<Activity> activitiesForCurrentWindow = new HashSet<>();
 			while (currentWindow.getEndTime() > timeManager.getCurrentTime())
 			{
+				//Lecture du dataSet 
+				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
 				if(ReasoningMode.on_sensor.equals(currentWindow.getReasoningMode()) 
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
 					List<Activity> res = doOntologicalAR(currentWindow);
@@ -54,13 +58,13 @@ public class SegmentationManager {
 			}
 //			discardPreviousSensorActivation();
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
-			//If overlapping true 
 			if(currentWindow.getSlidingFactor() == 1) {
 				currentWindow.setActive(false);
 				currentWindow = new Window(timeManager.getCurrentTime(), length);
 				ontologyManager = OntologyManager.getOntologyManager();
 			}
 		}
+		dataManager.close();
 	}
 	
 	public List<Activity> doOntologicalAR(Window w) {
@@ -90,11 +94,19 @@ public class SegmentationManager {
 		} 
 		else 
 		{
+			int m = 0;
+			Activity maxActivity = null;
 			//Obtain generic activity labels parent activity?????????????????
+			for(Activity a : list) {
+				if(m < a.getDuration()) {
+					m = a.getDuration();
+					maxActivity = a;
+				}
+			}
 //			Activity parentActivity = list.get(0).getParent();
-//			if(w.isShrinkableAndExpandable()) {
-//				attemptExpansion(w, parentActivity);
-//			}
+			if(w.isShrinkable() && w.isExpandable()) {
+				w.attemptExpand(maxActivity);
+			}
 		}
 		return list;
 	}

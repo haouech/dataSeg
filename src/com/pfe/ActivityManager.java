@@ -49,4 +49,12 @@ public class ActivityManager {
 	public Map<String, Integer> getActivitiesLength() {
 		return activityToLength;
 	}
+	
+	public int getLength(String label) {
+		Integer res = activityToLength.get(label);
+		if(res == null) {
+			return 0;
+		}
+		return res ;
+	}
 }
