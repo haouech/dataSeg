@@ -1,19 +1,26 @@
 package com.pfe;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.pfe.entities.Window;
+
 public class DataManager {
-	
+	public final String FILE = "resources/input.txt";
+	BufferedReader br;
+	File file;
+	String line;
 	private static DataManager instance = null;
-	private BufferedReader bufferReader;
+
 	
-	private DataManager() {
-		
+	private DataManager() {	
 		try {
-			bufferReader = new BufferedReader(new FileReader("input.txt"));
-        } catch (IOException e) {
+			this.file = new File(FILE);
+			this.br = new BufferedReader(new FileReader(file));
+			this.line = br.readLine();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -25,7 +32,22 @@ public class DataManager {
 		return instance;
 	}
 	
-	public void readLine() {
-		
+	public void readLine(int currentTime, Window w) {
+		try {
+			while (line != null && Integer.parseInt(line.split("@")[0]) == currentTime) {
+				w.getSet().add(line);
+				line = br.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void close() {
+		try {
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

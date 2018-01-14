@@ -46,7 +46,7 @@ public class OntologyManager {
 	private OntologyManager() {
 		manager = OWLManager.createOWLOntologyManager();
 		try {
-			FileInputStream propFile = new FileInputStream(new File("ontology.properties"));
+			FileInputStream propFile = new FileInputStream(new File("resources/ontology.properties"));
 			Properties properties = new Properties();
 			properties.load(propFile);
 			String owlfilename = properties.getProperty(OWL_FILE_KEY);
