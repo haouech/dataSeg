@@ -71,7 +71,7 @@ public class SegmentationManager {
 //			discardPreviousSensorActivation();
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			currentWindow.setActive(false);
-			ontologyManager = OntologyManager.getInstance();
+			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
 		}

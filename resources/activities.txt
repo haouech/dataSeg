@@ -1,3 +1,3 @@
-MakeTea:200
+MakeTea:8
 MakeCoffee:220
 BrushTeeth:150
