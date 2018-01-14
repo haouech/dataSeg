@@ -14,7 +14,7 @@ public class ActivityManager {
 	private Map<String, Integer> activityToLength;
 	
 	public ActivityManager() {
-		this.activityToLength = readLine("activities.txt");
+		this.activityToLength = readLine("resources/activities.txt");
 	}
 	
 	public static ActivityManager getInstance() {
@@ -30,14 +30,15 @@ public class ActivityManager {
 		Map<String, Integer> activityToLength = new HashMap<>();
 		try {
 			bufferReader = new BufferedReader(new FileReader(file));
-	        do {
-	        	line = bufferReader.readLine();
+			line = bufferReader.readLine();
+	        while(line != null) {
 	        	String[] parts = line.split(":");
 	        	String label = parts[0];
 	        	String Activitylength = parts[1];
 	        	int length = Integer.parseInt(Activitylength);
 	        	activityToLength.put(label, length);
-	        } while(line != null);
+	        	line = bufferReader.readLine();
+	        }
 			
 	        bufferReader.close();
 		} catch (IOException e) {

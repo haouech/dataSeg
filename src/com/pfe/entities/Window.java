@@ -74,7 +74,7 @@ public class Window {
 	 */
 	private boolean expandable;
 	
-	private final int DEFAULT_LENGTH = 50;
+	private final int DEFAULT_LENGTH = 3;
 	private final double DEFAULT_WINDOW_FACTOR = 1;
 	private final double DEFAULT_SLIDING_FACTOR = 1;
 	private final double DEFAULT_CHANGE_FACTOR = 1;
@@ -95,12 +95,11 @@ public class Window {
 		this.active = false;
 		ontologyManager = OntologyManager.getOntologyManager();
 	}
-	public Window(int start, int length) {
+	public Window(int start) {
 		this();
 		this.startTime = start;
-		this.length = length;
-		this.endTime = startTime + length;
 	}
+
 	
 	public boolean attemptShrink(Activity activity, int curTime) {
 		if(!shrinkable) {
@@ -144,7 +143,9 @@ public class Window {
 		int maxDuration = 0;
 		for(OWLClass c : subClassesSet) {
 			String label = c.getIRI().getFragment();
-			maxDuration = Math.max(maxDuration, activitiesToLength.get(label));
+			if(activitiesToLength.get(label) != null) {
+				maxDuration = Math.max(maxDuration, activitiesToLength.get(label));
+			}
 		}
 		return maxDuration;
 	}

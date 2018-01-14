@@ -2,10 +2,8 @@ package com.pfe;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 
 import com.pfe.entities.Window;
 
@@ -14,7 +12,10 @@ public class DataManager {
 	BufferedReader br;
 	File file;
 	String line;
-	public DataManager() {	
+	private static DataManager instance = null;
+
+	
+	private DataManager() {	
 		try {
 			this.file = new File(FILE);
 			this.br = new BufferedReader(new FileReader(file));
@@ -22,6 +23,13 @@ public class DataManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static DataManager getInstance() {
+		if(instance == null) {
+			instance = new DataManager();
+		}
+		return instance;
 	}
 	
 	public void readLine(int currentTime, Window w) {

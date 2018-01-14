@@ -10,7 +10,6 @@ import com.pfe.entities.Window;
 
 import com.pfe.entities.Activity;
 import window.ReasoningMode;
-//import window.Window;
 
 public class SegmentationManager {
 
@@ -21,12 +20,12 @@ public class SegmentationManager {
 	public SegmentationManager() {
 		ontologyManager = OntologyManager.getOntologyManager();
 		timeManager = new TimeManager();
-		dataManager = new DataManager();
+		dataManager = DataManager.getInstance();
 	}
 	
-	public void recognizeADL(int length) {
+	public void recognizeADL() {
 
-		Window initWindow = new Window(timeManager.getCurrentTime(), length);
+		Window initWindow = new Window(timeManager.getCurrentTime());
 		Window currentWindow = initWindow ;		
 		Map<Window,Set<Activity>> windowToActivitiesMap = new HashMap<>();
 		
@@ -42,12 +41,20 @@ public class SegmentationManager {
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
 					List<Activity> res = doOntologicalAR(currentWindow);
 					activitiesForCurrentWindow.addAll(res);
+					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
+					for(Activity a : res) {
+						System.out.println(a.getLabel());
+					}
 				}
 				else if(ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode()) 
 						&& timeManager.isInterval())
 				{
 					List<Activity> res = doOntologicalAR(currentWindow);
 					activitiesForCurrentWindow.addAll(res);
+					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
+					for(Activity a : res) {
+						System.out.println(a.getLabel());
+					}
 				}
 				timeManager.advanceTime();
 			}
@@ -55,12 +62,17 @@ public class SegmentationManager {
 			{
 				List<Activity> res = doOntologicalAR(currentWindow);
 				activitiesForCurrentWindow.addAll(res);
+				System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
+				for(Activity a : res) {
+					System.out.println(a.getLabel());
+				}
 			}
 //			discardPreviousSensorActivation();
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			if(currentWindow.getSlidingFactor() == 1) {
 				currentWindow.setActive(false);
-				currentWindow = new Window(timeManager.getCurrentTime(), length);
+				currentWindow = new Window(timeManager.getCurrentTime());
+				currentWindow.setActive(true);
 				ontologyManager = OntologyManager.getOntologyManager();
 			}
 		}
