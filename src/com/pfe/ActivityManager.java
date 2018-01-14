@@ -13,7 +13,7 @@ public class ActivityManager {
 	
 	private Map<String, Integer> activityToLength;
 	
-	public ActivityManager() {
+	private ActivityManager() {
 		this.activityToLength = readLine("resources/activities.txt");
 	}
 	

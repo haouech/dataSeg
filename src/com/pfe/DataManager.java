@@ -10,14 +10,13 @@ import com.pfe.entities.Window;
 public class DataManager {
 	public final String FILE = "resources/input.txt";
 	BufferedReader br;
-	File file;
 	String line;
 	private static DataManager instance = null;
 
 	
 	private DataManager() {	
 		try {
-			this.file = new File(FILE);
+			File file = new File(FILE);
 			this.br = new BufferedReader(new FileReader(file));
 			this.line = br.readLine();
 		} catch (IOException e) {
@@ -35,7 +34,7 @@ public class DataManager {
 	public void readLine(int currentTime, Window w) {
 		try {
 			while (line != null && Integer.parseInt(line.split("@")[0]) == currentTime) {
-				w.getSet().add(line);
+				w.addSensor(line);
 				line = br.readLine();
 			}
 		} catch (IOException e) {

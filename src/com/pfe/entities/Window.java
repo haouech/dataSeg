@@ -129,10 +129,9 @@ public class Window {
 		if(sensorDataSet.size()>0) { // TODO: check condition
 			int maxSubClassesDuration = getMaximumDurationFromSubclasses(activity);
 			if(maxSubClassesDuration > endTime) {
-				expand(maxSubClassesDuration);
+				expand(this.startTime + maxSubClassesDuration);
 				return true;
 			}
-			// TODO
 		}
 		return false;
 	}
@@ -160,7 +159,7 @@ public class Window {
 	}
 	
 	public void expand(int time) {
-		this.endTime = this.endTime + time;
+		this.endTime = time;
 		updateLength();
 	}
 	

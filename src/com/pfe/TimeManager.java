@@ -9,24 +9,33 @@ public class TimeManager {
 	private final int INTERVAL_LENGTH = 10;
 	private final int END_TIME = 30;
 	
-	public TimeManager() {
+	private static TimeManager instance = null;
+	
+	private TimeManager() {
 		this.currentTime = 0;
 		this.endTime = END_TIME;
 		this.interval = false;
 		this.intervalTime = 0;
 	}
 	
-	public TimeManager(int time) {
+	private TimeManager(int time) {
 		this();
 		this.currentTime = time;
 		this.endTime = currentTime + END_TIME;
 	}
 	
-	public TimeManager(int time, int endTime) {
+	private TimeManager(int time, int endTime) {
 		this(time);
 		if(endTime >= this.currentTime) {
 			this.endTime = endTime;
 		}
+	}
+	
+	public static TimeManager getInstance() {
+		if(instance == null) {
+			instance = new TimeManager();
+		}
+		return instance;
 	}
 	
 	public boolean advanceTime() {
