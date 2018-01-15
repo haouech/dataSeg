@@ -7,7 +7,7 @@ public class TimeManager {
 	private boolean interval = false;
 	private int intervalTime;
 	private final int INTERVAL_LENGTH = 10;
-	private final int END_TIME = 10;
+	private final int END_TIME = 30;
 	
 	private static TimeManager instance = null;
 	
