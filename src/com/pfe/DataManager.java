@@ -33,7 +33,10 @@ public class DataManager {
 	
 	public void readLine(int currentTime, Window w) {
 		try {
-			while (line != null && Integer.parseInt(line.split("@")[0]) == currentTime) {
+			while (line != null && Integer.parseInt(line.split("@")[0]) <= currentTime) {
+				if(w.getEffectiveStartTime() == -1) {
+					w.setEffectiveStartTime(currentTime);
+				}
 				w.addSensor(line);
 				line = br.readLine();
 			}

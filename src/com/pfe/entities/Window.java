@@ -74,6 +74,11 @@ public class Window {
 	 */
 	private boolean expandable;
 	
+	/**
+	 * start time of the first data input
+	 */
+	private int effectiveStartTime;
+	
 	private final int DEFAULT_LENGTH = 3;
 	private final double DEFAULT_WINDOW_FACTOR = 1;
 	private final double DEFAULT_SLIDING_FACTOR = 1;
@@ -82,6 +87,7 @@ public class Window {
 	
 	public Window() {
 		this.startTime = 0; 
+		this.effectiveStartTime = -1; 
 		this.length = DEFAULT_LENGTH;
 		this.endTime = startTime + length;
 		this.reasoningMode = ReasoningMode.on_sensor;
@@ -187,12 +193,22 @@ public class Window {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public double getStartTime() {
+	
+	public int getStartTime() {
 		return startTime;
 	}
 
 	public void setStartTime(int startTime) {
 		this.startTime = startTime;
+	}
+	
+
+	public int getEffectiveStartTime() {
+		return effectiveStartTime;
+	}
+
+	public void setEffectiveStartTime(int startTime) {
+		this.effectiveStartTime = startTime;
 	}
 
 	public double getEndTime() {

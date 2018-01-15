@@ -27,6 +27,7 @@ import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 import dl_query.DLQueryEngine;
 import dl_query.DLQueryPrinter;
 import com.pfe.entities.Activity;
+import com.pfe.entities.Window;
 
 public class OntologyManager {
 
@@ -72,7 +73,9 @@ public class OntologyManager {
 		return instance;
 	}
 
-	public List<Activity> callOntology(List<String> dataSet) {
+	public List<Activity> callOntology(Window window) {
+		List<String> dataSet = window.getSet();
+		int windowStartTime = window.getEffectiveStartTime();
 		List<Activity> activities = new ArrayList<Activity>();
 		for (String s : dataSet) {
 			String[] parts = s.split("@");
@@ -84,14 +87,14 @@ public class OntologyManager {
 			} else {
 				deleteProperty(sensor, time);
 			}
-		}	
+		}
 		String query = createQuery();
 		System.out.println("Query: " + query);
 		Set<OWLClass> equivalentClasses = queryEquivalentClasses(query, ontology);
 		if(equivalentClasses.size() > 0) {
 			OWLClass c = equivalentClasses.iterator().next();
 			Activity activity = new Activity(c.getIRI().getFragment());
-			activity.setStartTime(timeManager.getCurrentTime());
+			activity.setStartTime(windowStartTime);
 			activity.setAsserted(true);
 			activity.setSpecific(true);
 			activities.add(activity);
@@ -100,7 +103,7 @@ public class OntologyManager {
 		Set<OWLClass> subClasses = querySubClasses(query, ontology);
 		for(OWLClass c : subClasses) {
 			Activity activity = new Activity(c.getIRI().getFragment());
-			activity.setStartTime(timeManager.getCurrentTime());
+			activity.setStartTime(windowStartTime);
 			NodeSet<OWLClass> classes = reasoner.getSubClasses(c, false);
 			if(classes.getFlattened().size() == 1) {
 				activity.setSpecific(true);

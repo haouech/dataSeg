@@ -33,14 +33,14 @@ public class SegmentationManager {
 		while (timeManager.isStillRunning()) 
 		{
 			Set<Activity> activitiesForCurrentWindow = new HashSet<>();
+			List<Activity> res = null;
 			while (timeManager.isStillRunning() && currentWindow.getEndTime() > timeManager.getCurrentTime())
 			{
 				//Lecture du dataSet 
 				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
 				if(ReasoningMode.on_sensor.equals(currentWindow.getReasoningMode()) 
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
-					List<Activity> res = doOntologicalAR(currentWindow);
-					activitiesForCurrentWindow.addAll(res);
+					res = doOntologicalAR(currentWindow);
 					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 					for(Activity a : res) {
 						System.out.println(a.getLabel());
@@ -49,8 +49,8 @@ public class SegmentationManager {
 				else if(ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode()) 
 						&& timeManager.isInterval())
 				{
-					List<Activity> res = doOntologicalAR(currentWindow);
-					activitiesForCurrentWindow.addAll(res);
+					res = doOntologicalAR(currentWindow);
+//					activitiesForCurrentWindow.addAll(res);
 					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 					for(Activity a : res) {
 						System.out.println(a.getLabel());
@@ -58,10 +58,11 @@ public class SegmentationManager {
 				}
 				timeManager.advanceTime();
 				// TODO: Handle data input
-			}
+			} // End of window
+			activitiesForCurrentWindow.addAll(res);
 			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) 
 			{
-				List<Activity> res = doOntologicalAR(currentWindow);
+				res = doOntologicalAR(currentWindow);
 				activitiesForCurrentWindow.addAll(res);
 				System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 				for(Activity a : res) {
@@ -69,8 +70,8 @@ public class SegmentationManager {
 				}
 			}
 //			discardPreviousSensorActivation();
-			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			currentWindow.setActive(false);
+			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
@@ -80,7 +81,7 @@ public class SegmentationManager {
 	
 	public List<Activity> doOntologicalAR(Window w) {
 		List<Activity> list;
-		list = ontologyManager.callOntology(w.getSet());
+		list = ontologyManager.callOntology(w);
 		if(list.size()==0) {
 			return list;
 		}
@@ -90,15 +91,14 @@ public class SegmentationManager {
 			if (currentActivity.isSpecific()) 
 			{
 				System.out.println("One possible activity identified");
-				if(w.isShrinkable()) {
-					if(!w.attemptShrink(currentActivity, timeManager.getCurrentTime())) {
-						System.out.println("more sensor data needed");
-						w.attemptExpand(currentActivity);
-					}
+				if(!w.attemptShrink(currentActivity, timeManager.getCurrentTime())) {
+					System.out.println("more sensor data needed");
+					w.attemptExpand(currentActivity);
 				}
 			} 
 			else 
 			{
+				System.out.println("Activity not specific");
 				System.out.println("more sensor data needed");
 				w.attemptExpand(currentActivity);
 			}
@@ -115,7 +115,7 @@ public class SegmentationManager {
 				}
 			}
 //			Activity parentActivity = list.get(0).getParent();
-			if(w.isShrinkable() && w.isExpandable()) {
+			if(w.isExpandable()) {
 				w.attemptExpand(maxActivity);
 			}
 		}
