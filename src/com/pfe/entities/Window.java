@@ -1,6 +1,7 @@
 package com.pfe.entities;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +14,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 
 public class Window {
 	
-
+	public static List<String> finalList = new LinkedList<String>();
 	/**
 	 * start time .
 	 */
@@ -79,7 +80,7 @@ public class Window {
 	 */
 	private int effectiveStartTime;
 	
-	private final int DEFAULT_LENGTH = 3;
+	private final int DEFAULT_LENGTH = 6*50;
 	private final double DEFAULT_WINDOW_FACTOR = 1;
 	private final double DEFAULT_SLIDING_FACTOR = 1;
 	private final double DEFAULT_CHANGE_FACTOR = 1;
@@ -96,7 +97,7 @@ public class Window {
 		this.changeFactor = DEFAULT_CHANGE_FACTOR;
 		this.sensorDataSet = new ArrayList<String>();
 		this.activityLabels = new ArrayList<>();
-		this.shrinkable = true;
+		this.shrinkable = false;
 		this.expandable = true;
 		this.active = false;
 		ontologyManager = OntologyManager.getInstance();
@@ -112,9 +113,16 @@ public class Window {
 		if(!shrinkable) {
 			return false;
 		}
-		if(activity.isAsserted() || activity.isExhausted(curTime)) {
+		if(activity.isAsserted()) {
 			shrink(curTime);
 			System.out.println("Activity identified: " + activity.getLabel());
+			finalList.add("Activity identified: "+activity.getLabel());
+			return true;
+		}
+		if(activity.isExhausted(curTime)) {
+			shrink(curTime);
+			System.out.println("Time Exhausted for: " + activity.getLabel());
+			finalList.add("Time Exhausted for: "+activity.getLabel());
 			return true;
 		}
 		if(activity.getEndTime() >= endTime) {

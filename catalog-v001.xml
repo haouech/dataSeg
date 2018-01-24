@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1516446482126" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="ADL-0.2.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1516446482126" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="activities.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1516446482126" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="ADL-0.3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1516638925288" name="http://www.semanticweb.org/asma/ontologies/2018/0/untitled-ontology-32" uri="ADL-dataset.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1516638925288" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="ADL-0.2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1516638925288" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="ADL-0.4.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1516638925288" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="ADL-0.3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1516638925288" name="duplicate:http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1" uri="activities.owl"/>
     </group>
 </catalog>

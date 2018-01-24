@@ -8,7 +8,7 @@ import java.io.IOException;
 import com.pfe.entities.Window;
 
 public class DataManager {
-	public final String FILE = "resources/input.txt";
+	public final String FILE = "resources/data3";
 	BufferedReader br;
 	String line;
 	private static DataManager instance = null;
