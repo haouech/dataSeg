@@ -24,9 +24,9 @@ public class SegmentationManager {
 	}
 	
 	public void recognizeADL() {
-
+		int i=1;
 		Window initWindow = new Window(timeManager.getCurrentTime());
-		Window currentWindow = initWindow ;		
+		Window currentWindow = initWindow ;	
 		Map<Window,Set<Activity>> windowToActivitiesMap = new HashMap<>();
 		
 		currentWindow.setActive(true);
@@ -75,6 +75,8 @@ public class SegmentationManager {
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
+			System.out.println("fentre "+ i);
+			i++;
 		}
 		dataManager.close();
 	}
@@ -90,7 +92,21 @@ public class SegmentationManager {
 			Activity currentActivity = list.get(0);
 			if (currentActivity.isSpecific()) 
 			{
+				// if not shrinkable add identified activities to final list here
 				System.out.println("One possible activity identified");
+				if (!w.isShrinkable())
+				{
+					if(currentActivity.isAsserted()) 
+					{
+						System.out.println("Activity identified: " + currentActivity.getLabel());
+						Window.finalList.add("Activity identified: "+currentActivity.getLabel());
+					}
+					if(currentActivity.isExhausted(timeManager.getCurrentTime())) 
+					{
+						System.out.println("Time Exhausted for: " + currentActivity.getLabel());
+						Window.finalList.add("Time Exhausted for: "+currentActivity.getLabel());
+					}
+				}
 				if(!w.attemptShrink(currentActivity, timeManager.getCurrentTime())) {
 					System.out.println("more sensor data needed");
 					w.attemptExpand(currentActivity);

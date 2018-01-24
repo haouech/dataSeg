@@ -41,7 +41,7 @@ public class OntologyManager {
 	public Set<String> properties = new HashSet<String>();
 	
 	final private String OWL_FILE_KEY = "owlfilename";
-	final private String documentIRI = "http://www.semanticweb.org/haouech/ontologies/2017/10/activities-0-1";
+	final private String documentIRI = "http://www.semanticweb.org/asma/ontologies/2018/0/Activities";
 
 	private static OntologyManager instance = null;
 	
@@ -75,7 +75,7 @@ public class OntologyManager {
 
 	public List<Activity> callOntology(Window window) {
 		List<String> dataSet = window.getSet();
-		int windowStartTime = window.getEffectiveStartTime();
+		int windowStartTime = window.getStartTime();
 		List<Activity> activities = new ArrayList<Activity>();
 		for (String s : dataSet) {
 			String[] parts = s.split("@");
@@ -136,6 +136,7 @@ public class OntologyManager {
 		for (OWLClass c : set) {
 			String type = c.getIRI().getFragment();
 			// Fix name typos
+			
 			type = type.equals("Addings")?"Adding":type;
 			type = type.equals("DrinkType")?"HotDrinkType":type;
 			

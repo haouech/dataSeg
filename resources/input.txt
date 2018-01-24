@@ -1,5 +1,6 @@
 0@Bathroom@on
 5@Bathroom@off
 6@Kitchen@on
-7@Tea@on
+7@Cup@on
+8@Tea@on
 9@Milk@on

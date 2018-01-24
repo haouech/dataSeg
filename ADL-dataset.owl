@@ -1,0 +1,500 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/asma/ontologies/2018/0/untitled-ontology-32#"
+     xml:base="http://www.semanticweb.org/asma/ontologies/2018/0/untitled-ontology-32"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Electric"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasFlush -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasFlush">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Flush"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Pressure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BathroomADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BathroomADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Bed -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Bed">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Pressure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BedroomADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BedroomADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Breakfast -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Breakfast">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Electric -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Electric">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Entrance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Entrance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Flush -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Flush">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Grooming -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Grooming">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BathroomADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Leaving -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Leaving">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Maindoor"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Entrance"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Maindoor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Lunch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Lunch">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Maindoor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Maindoor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Electric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Pressure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Pressure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Pressure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Shower -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Shower">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Showering -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Showering">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Shower"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BathroomADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Shower"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Sleeping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Sleeping">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Bed"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BedroomADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Bed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Electric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toilet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toilet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Flush"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toileting -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toileting">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasFlush"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toilet"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#BathroomADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasFlush"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toilet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare_Time/TV -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare_Time/TV">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
