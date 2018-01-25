@@ -1,6 +1,7 @@
 package com.pfe.entities;
 
 import com.pfe.ActivityManager;
+import com.pfe.TimeManager;
 
 public class Activity {
 	
@@ -8,12 +9,14 @@ public class Activity {
 	private boolean asserted;
 	private int startTime;
 	private int duration;
+	private int assertionTime;
 	private String label;
 	
 	public Activity(String label) {
 		this.label = label;
 		this.startTime = 0;
 		this.duration = ActivityManager.getInstance().getLength(label);
+		this.assertionTime = -1;
 		this.specific = false;
 		this.asserted = false;
 	}
@@ -50,6 +53,10 @@ public class Activity {
 
 	public void setAsserted(boolean asserted) {
 		this.asserted = asserted;
+	}
+	
+	public int getAssertionTime() {
+		return assertionTime;
 	}
 	
 	public int getEndTime() {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.pfe.ActivityManager;
+import com.pfe.Logger;
 import com.pfe.OntologyManager;
 import com.pfe.TimeManager;
 import com.pfe.entities.Activity;
@@ -86,6 +87,9 @@ public class Window {
 	private final double DEFAULT_SLIDING_FACTOR = 1;
 	private final double DEFAULT_CHANGE_FACTOR = 1;
 	private OntologyManager ontologyManager;
+	private TimeManager timeManager;
+	
+	private boolean asserted;
 	
 	public Window() {
 		this.startTime = 0; 
@@ -102,6 +106,8 @@ public class Window {
 		this.expandable = true;
 		this.active = false;
 		ontologyManager = OntologyManager.getInstance();
+		timeManager = TimeManager.getInstance();
+		this.asserted = false;
 	}
 	public Window(int start) {
 		this();
@@ -116,22 +122,22 @@ public class Window {
 		}
 		if(activity.isExhausted(curTime)) {
 			shrink(curTime);
-			System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" Time Exhausted for: " + activity.getLabel()+"************");
-//			System.out.println("Time Exhausted for: " + activity.getLabel());
-			finalList.add("Time Exhausted for: "+activity.getLabel());
+			Logger.write(timeManager.getCurrentTime(), 
+							"Time Exhausted for: " + activity.getLabel());
 			return true;
 		}
 		if(activity.isAsserted()) {
+			if(!asserted) {
+				asserted = true;
+				Logger.write(timeManager.getCurrentTime(), "Start of activity: " + activity.getLabel());
+			}
 			ontologyManager.clearDisabledProperties();
 			if(ontologyManager.isPropertiesEmpty()) {
 				shrink(curTime);
-				System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" End of activity: " + activity.getLabel()+"************");
-//				System.out.println("End of activity: " + activity.getLabel());
-				finalList.add("End of activity: " + activity.getLabel() + curTime);
+				Logger.write(timeManager.getCurrentTime(), 
+								"End of activity:   " + activity.getLabel());
 				return true;
 			}
-//			System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" Current activity is: " + activity.getLabel()+"************");
-//			System.out.println("Current activity is: " + activity.getLabel());
 		}
 		if(activity.getEndTime() >= endTime) {
 			return attemptExpand(activity);

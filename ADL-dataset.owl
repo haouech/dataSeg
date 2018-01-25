@@ -427,6 +427,26 @@
     
 
 
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster">
@@ -469,26 +489,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Basin"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare_Time/TV -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Spare_Time/TV">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPressure"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Seat"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

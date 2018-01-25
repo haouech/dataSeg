@@ -24,11 +24,11 @@ public class SegmentationManager {
 	}
 	
 	public void recognizeADL() {
+		Logger.init();
 		int i=0;
 		Window initWindow = new Window(timeManager.getCurrentTime());
 		Window currentWindow = initWindow ;	
 		Map<Window,Set<Activity>> windowToActivitiesMap = new HashMap<>();
-		System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
 		currentWindow.setActive(true);
 		while (timeManager.isStillRunning()) 
 		{
@@ -40,43 +40,26 @@ public class SegmentationManager {
 				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
 				if(ReasoningMode.on_sensor.equals(currentWindow.getReasoningMode()) 
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
-//					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 					res = doOntologicalAR(currentWindow);
-//					for(Activity a : res) {
-//						System.out.println(a.getLabel());
-//					}
-				}
-				else if(ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode()) 
-						&& timeManager.isInterval())
-				{
-					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
+				} else if(ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode()) 
+						&& timeManager.isInterval()) {
 					res = doOntologicalAR(currentWindow);
-//					activitiesForCurrentWindow.addAll(res);
-//					for(Activity a : res) {
-//						System.out.println(a.getLabel());
-//					}
 				}
 				timeManager.advanceTime();
 				
 			} // End of window
 			activitiesForCurrentWindow.addAll(res);
-			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) 
-			{
-				System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
+			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) {
 				res = doOntologicalAR(currentWindow);
 				activitiesForCurrentWindow.addAll(res);
-//				for(Activity a : res) {
-//					System.out.println(a.getLabel());
-//				}
 			}
-//			discardPreviousSensorActivation();
 			currentWindow.setActive(false);
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
 			i++;
-			System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
+//			System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
 			//System.out.println("start fenetre "+ i);
 		}
 		dataManager.close();
@@ -85,58 +68,37 @@ public class SegmentationManager {
 	public List<Activity> doOntologicalAR(Window w) {
 		List<Activity> list;
 		list = ontologyManager.callOntology(w);
-		if(list.size()==0) {
+		if(list.isEmpty()) {
 			return list;
 		}
-		if (list.size() == 1) 
-		{
+		if (list.size() == 1) {
 			Activity currentActivity = list.get(0);
-			if (currentActivity.isSpecific()) 
-			{
-				// if not shrinkable add identified activities to final list here
-				//System.out.println("One possible activity identified");
-				if (!w.isShrinkable())
-				{
-					if(currentActivity.isAsserted()) 
-					{
-						System.out.println("Activity identified: " + currentActivity.getLabel());
-						Window.finalList.add("Activity identified: "+currentActivity.getLabel());
-					}
-					if(currentActivity.isExhausted(timeManager.getCurrentTime())) 
-					{
-						System.out.println("Time Exhausted for: " + currentActivity.getLabel());
-						Window.finalList.add("Time Exhausted for: "+currentActivity.getLabel());
-					}
-				}
+			if (currentActivity.isSpecific()) {
 				if(!w.attemptShrink(currentActivity, timeManager.getCurrentTime())) {
-					//System.out.println("more sensor data needed");
 					w.attemptExpand(currentActivity);
 				}
-			} 
-			else 
-			{
-				//System.out.println(currentActivity + " Activity not specific");
-				//System.out.println("more sensor data needed");
+			} else {
 				w.attemptExpand(currentActivity);
 			}
-		} 
-		else 
-		{
-			int m = 0;
-			Activity maxActivity = null;
-			//Obtain generic activity labels parent activity?????????????????
-			for(Activity a : list) {
-				if(m < a.getDuration()) {
-					m = a.getDuration();
-					maxActivity = a;
-				}
-			}
-//			Activity parentActivity = list.get(0).getParent();
+		} else {
+			Activity maxActivity  = getMaxDuration(list);
 			if(w.isExpandable()) {
 				w.attemptExpand(maxActivity);
 			}
 		}
 		return list;
+	}
+	
+	private Activity getMaxDuration(List<Activity> list) {
+		Activity maxActivity = null;
+		int m = 0;
+		for(Activity a : list) {
+			if(m < a.getDuration()) {
+				m = a.getDuration();
+				maxActivity = a;
+			}
+		}
+		return maxActivity;
 	}
 
 }
