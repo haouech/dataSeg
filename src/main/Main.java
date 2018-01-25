@@ -29,11 +29,7 @@ public class Main {
 //		System.out.println(w.getSet().get(1));
 		
 		sm.recognizeADL();
-		try {
-			System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("resources/output2.txt"))));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		System.setOut(System.out);	
 		for (String s : Window.finalList) {
 			System.out.println(s);
 		}
