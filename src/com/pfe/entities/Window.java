@@ -81,7 +81,7 @@ public class Window {
 	 */
 	private int effectiveStartTime;
 	
-	private final int DEFAULT_LENGTH = 6*50;
+	private final int DEFAULT_LENGTH = 60*5;
 	private final double DEFAULT_WINDOW_FACTOR = 1;
 	private final double DEFAULT_SLIDING_FACTOR = 1;
 	private final double DEFAULT_CHANGE_FACTOR = 1;
@@ -122,9 +122,6 @@ public class Window {
 			return true;
 		}
 		if(activity.isAsserted()) {
-			if(TimeManager.getInstance().getCurrentTime() == 38988) {
-				System.out.println(curTime);
-			}
 			ontologyManager.clearDisabledProperties();
 			if(ontologyManager.isPropertiesEmpty()) {
 				shrink(curTime);
@@ -135,7 +132,6 @@ public class Window {
 			}
 //			System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" Current activity is: " + activity.getLabel()+"************");
 //			System.out.println("Current activity is: " + activity.getLabel());
-			return true;
 		}
 		if(activity.getEndTime() >= endTime) {
 			return attemptExpand(activity);
@@ -147,8 +143,7 @@ public class Window {
 		if(!expandable) {
 			return false;
 		}
-		if(activity.isSpecific() && !activity.isAsserted() && 
-				activity.getEndTime() > endTime){
+		if(activity.isSpecific() && activity.getEndTime() > endTime){
 			expand(activity.getEndTime());
 			return true;
 		}
