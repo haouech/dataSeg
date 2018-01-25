@@ -9,7 +9,7 @@ import java.util.Set;
 import com.pfe.ActivityManager;
 import com.pfe.OntologyManager;
 import com.pfe.entities.Activity;
-import window.ReasoningMode;
+
 import org.semanticweb.owlapi.model.OWLClass;
 
 public class Window {
@@ -153,6 +153,7 @@ public class Window {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation")
 	private int getMaximumDurationFromSubclasses(Activity activity) {
 		Set<OWLClass> subClassesSet = ontologyManager.getActivitySubClasses(activity);
 		Map<String, Integer> activitiesToLength = ActivityManager.getInstance().getActivitiesLength();

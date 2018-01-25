@@ -35,7 +35,6 @@ public class OntologyManager {
 	private OWLOntology ontology;
 	private OWLDataFactory factory;
 	private Reasoner reasoner;
-	private TimeManager timeManager;
 	
 	private Map<String, String> unique_properties = new HashMap<String, String>();
 	private Set<String> properties = new HashSet<String>();
@@ -65,7 +64,6 @@ public class OntologyManager {
 		}
 		factory = manager.getOWLDataFactory();
 		reasoner = new Reasoner(ontology);
-		timeManager = TimeManager.getInstance();
 	}
 	
 	public static OntologyManager getInstance() {
@@ -75,6 +73,7 @@ public class OntologyManager {
 		return instance;
 	}
 
+	@SuppressWarnings("deprecation")
 	public List<Activity> callOntology(Window window) {
 		List<String> dataSet = window.getSet();
 		int windowStartTime = window.getStartTime();
@@ -132,6 +131,7 @@ public class OntologyManager {
 		return set;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void addProperty(String sensor, String time) {
 		OWLClass cls = factory.getOWLClass(IRI.create(documentIRI+"#"+sensor));
 		Set<OWLClass> set = reasoner.getSuperClasses(cls, true).getFlattened();
@@ -152,6 +152,7 @@ public class OntologyManager {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void deleteProperty(String sensor, String time) {
 		OWLClass cls = factory.getOWLClass(IRI.create(documentIRI+"#"+sensor));
 		Set<OWLClass> set = reasoner.getSuperClasses(cls, true).getFlattened();

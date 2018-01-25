@@ -46,9 +46,9 @@ public class TimeManager {
 		intervalTime++;
 		if(intervalTime >= INTERVAL_LENGTH) {
 			interval  = true;
-			intervalTime = 0;
+			intervalTime = intervalTime % INTERVAL_LENGTH;
 		}
-		if(currentTime > endTime) {
+		if(!isStillRunning()) {
 			return false;
 		}
 		return true;
@@ -65,7 +65,7 @@ public class TimeManager {
 		intervalTime += (time - currentTime);
 		if(intervalTime >= INTERVAL_LENGTH) {
 			interval  = true;
-			intervalTime = 0;
+			intervalTime = intervalTime % INTERVAL_LENGTH;
 		}
 		if(!isStillRunning()) {
 			return false;

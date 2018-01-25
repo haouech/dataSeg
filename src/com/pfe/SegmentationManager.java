@@ -9,7 +9,7 @@ import java.util.Set;
 import com.pfe.entities.Window;
 
 import com.pfe.entities.Activity;
-import window.ReasoningMode;
+import com.pfe.entities.ReasoningMode;
 
 public class SegmentationManager {
 
@@ -57,7 +57,7 @@ public class SegmentationManager {
 					}
 				}
 				timeManager.advanceTime();
-				// TODO: Handle data input
+				
 			} // End of window
 			activitiesForCurrentWindow.addAll(res);
 			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) 
