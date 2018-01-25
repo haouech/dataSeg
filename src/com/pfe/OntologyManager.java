@@ -82,7 +82,7 @@ public class OntologyManager {
 			String[] parts = s.split("@");
 			String time = parts[0];
 			String sensor = parts[1]; 
-			String state = parts[2];
+			String state = parts[2].replaceAll("\\s+","").toLowerCase();
 			if(state.equals("on")) {
 				addProperty(sensor, time);
 			} else {
@@ -213,5 +213,6 @@ public class OntologyManager {
 				properties.remove(str);
 			}
 		}
+		disabledProperties.clear();
 	}
 }

@@ -132,48 +132,49 @@
 **********time : 38575 End of activity: Breakfast************
 **********time : 38576 Start window 129************
 **********time : 38876 Start window 130************
-**********time : 38988 End of activity: Grooming************
-**********time : 38989 Start window 131************
-**********time : 39289 Start window 132************
-**********time : 39589 Start window 133************
-**********time : 39889 Start window 134************
-**********time : 40189 Start window 135************
-**********time : 40489 Start window 136************
-**********time : 40789 Start window 137************
-**********time : 41089 Start window 138************
-**********time : 41389 Start window 139************
-**********time : 41689 Start window 140************
-**********time : 41989 Start window 141************
-**********time : 42289 Start window 142************
-**********time : 42589 Start window 143************
-**********time : 42889 Start window 144************
-**********time : 43189 Start window 145************
-**********time : 43489 Start window 146************
-**********time : 43789 Start window 147************
-**********time : 44089 Start window 148************
-**********time : 44389 Start window 149************
-**********time : 44689 Start window 150************
-**********time : 44989 Start window 151************
-**********time : 45289 Start window 152************
-**********time : 45589 Start window 153************
-**********time : 45889 Start window 154************
-**********time : 46189 Start window 155************
-**********time : 46489 Start window 156************
-**********time : 46789 Start window 157************
-**********time : 47089 Start window 158************
-**********time : 47164 End of activity: Grooming************
-**********time : 47165 Start window 159************
-**********time : 47167 End of activity: Toileting************
-**********time : 47168 Start window 160************
+**********time : 39073 End of activity: Grooming************
+**********time : 39074 Start window 131************
+**********time : 39101 Time Exhausted for: TV************
+**********time : 39102 Start window 132************
+**********time : 39402 Start window 133************
+**********time : 39702 Start window 134************
+**********time : 40002 Start window 135************
+**********time : 40302 Start window 136************
+**********time : 40602 Start window 137************
+**********time : 40902 Start window 138************
+**********time : 41202 Start window 139************
+**********time : 41502 Start window 140************
+**********time : 41802 Start window 141************
+**********time : 42102 Start window 142************
+**********time : 42402 Start window 143************
+**********time : 42702 Start window 144************
+**********time : 43002 Start window 145************
+**********time : 43302 Start window 146************
+**********time : 43602 Start window 147************
+**********time : 43902 Start window 148************
+**********time : 44202 Start window 149************
+**********time : 44502 Start window 150************
+**********time : 44802 Start window 151************
+**********time : 45102 Start window 152************
+**********time : 45402 Start window 153************
+**********time : 45702 Start window 154************
+**********time : 46002 Start window 155************
+**********time : 46302 Start window 156************
+**********time : 46602 Start window 157************
+**********time : 46902 Start window 158************
+**********time : 47166 End of activity: Grooming************
+**********time : 47167 Start window 159************
+**********time : 47191 End of activity: Toileting************
+**********time : 47192 Start window 160************
 **********time : 47375 End of activity: Leaving************
 **********time : 47376 Start window 161************
 **********time : 47676 Start window 162************
 **********time : 47976 Start window 163************
 **********time : 48276 Start window 164************
-**********time : 48539 End of activity: Leaving************
-**********time : 48540 Start window 165************
-**********time : 48840 Start window 166************
-**********time : 49120 End of activity: Spare_Time/TV************
+**********time : 48549 End of activity: Leaving************
+**********time : 48550 Start window 165************
+**********time : 48850 Start window 166************
+**********time : 49120 Time Exhausted for: TV************
 **********time : 49121 Start window 167************
 **********time : 49421 Start window 168************
 **********time : 49721 Start window 169************
@@ -184,19 +185,18 @@
 **********time : 51221 Start window 174************
 **********time : 51521 Start window 175************
 **********time : 51821 Start window 176************
-**********time : 51998 End of activity: Toileting************
-**********time : 51999 Start window 177************
-**********time : 52266 End of activity: Lunch************
-**********time : 52267 Start window 178************
-**********time : 52567 Start window 179************
-**********time : 52867 Start window 180************
-**********time : 53167 Start window 181************
-**********time : 53467 Start window 182************
-**********time : 53767 Start window 183************
-**********time : 54067 Start window 184************
-**********time : 54299 End of activity: Grooming************
-**********time : 54300 Start window 185************
-**********time : 54421 End of activity: Spare_Time/TV************
+**********time : 52027 End of activity: Toileting************
+**********time : 52028 Start window 177************
+**********time : 52328 Start window 178************
+**********time : 52628 Start window 179************
+**********time : 52928 Start window 180************
+**********time : 53228 Start window 181************
+**********time : 53528 Start window 182************
+**********time : 53828 Start window 183************
+**********time : 54128 Start window 184************
+**********time : 54389 End of activity: Grooming************
+**********time : 54390 Start window 185************
+**********time : 54421 Time Exhausted for: TV************
 **********time : 54422 Start window 186************
 **********time : 54722 Start window 187************
 **********time : 55022 Start window 188************
@@ -212,7 +212,7 @@
 **********time : 58022 Start window 198************
 **********time : 58205 End of activity: Grooming************
 **********time : 58206 Start window 199************
-**********time : 58238 End of activity: Spare_Time/TV************
+**********time : 58238 Time Exhausted for: TV************
 **********time : 58239 Start window 200************
 **********time : 58539 Start window 201************
 **********time : 58839 Start window 202************
@@ -312,3 +312,4 @@
 **********time : 87039 Start window 296************
 **********time : 87339 Start window 297************
 **********time : 87639 Start window 298************
+**********time : 87939 Start window 299************

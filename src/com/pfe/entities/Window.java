@@ -122,6 +122,9 @@ public class Window {
 			return true;
 		}
 		if(activity.isAsserted()) {
+			if(TimeManager.getInstance().getCurrentTime() == 38988) {
+				System.out.println(curTime);
+			}
 			ontologyManager.clearDisabledProperties();
 			if(ontologyManager.isPropertiesEmpty()) {
 				shrink(curTime);
