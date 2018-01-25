@@ -37,8 +37,10 @@ public class OntologyManager {
 	private Reasoner reasoner;
 	private TimeManager timeManager;
 	
-	public Map<String, String> unique_properties = new HashMap<String, String>();
-	public Set<String> properties = new HashSet<String>();
+	private Map<String, String> unique_properties = new HashMap<String, String>();
+	private Set<String> properties = new HashSet<String>();
+	
+	private List<String> disabledProperties = new ArrayList<String>();
 	
 	final private String OWL_FILE_KEY = "owlfilename";
 	final private String documentIRI = "http://www.semanticweb.org/asma/ontologies/2018/0/Activities";
@@ -158,12 +160,18 @@ public class OntologyManager {
 			// Fix name typos
 			type = type.equals("Addings")?"Adding":type;
 			type = type.equals("DrinkType")?"HotDrinkType":type;
-			
+			String prop;
 			if(type.equals("Location")) {
-				unique_properties.remove("hasLocation some ");
+				prop = "hasLocation some ";
 			} else {
-				properties.remove("has" + type + " some " + sensor);
+				prop = "has" + type + " some " + sensor;
 			}
+			disabledProperties.add(prop);
+//			if(type.equals("Location")) {
+//				unique_properties.remove("hasLocation some ");
+//			} else {
+//				properties.remove("has" + type + " some " + sensor);
+//			}
 		}
 	}
 
@@ -180,6 +188,7 @@ public class OntologyManager {
 			// remove trailing "and"
 			query = query.substring(0, query.length()-5);
 		}
+		
 		return query;
 	}
 	
@@ -192,5 +201,16 @@ public class OntologyManager {
 		unique_properties.clear();
 		properties.clear();
 	}
-	
+	public boolean isPropertiesEmpty() {
+		return properties.size() == 0 && unique_properties.size() == 0;
+	}
+	public void clearDisabledProperties() {
+		for(String str : disabledProperties) {
+			if(str.substring(str.length()-5).equals("some ")) {
+				unique_properties.remove(str);
+			} else {
+				properties.remove(str);
+			}
+		}
+	}
 }

@@ -97,7 +97,7 @@ public class Window {
 		this.changeFactor = DEFAULT_CHANGE_FACTOR;
 		this.sensorDataSet = new ArrayList<String>();
 		this.activityLabels = new ArrayList<>();
-		this.shrinkable = false;
+		this.shrinkable = true;
 		this.expandable = true;
 		this.active = false;
 		ontologyManager = OntologyManager.getInstance();
@@ -113,16 +113,19 @@ public class Window {
 		if(!shrinkable) {
 			return false;
 		}
-		if(activity.isAsserted()) {
-			shrink(curTime);
-			System.out.println("Activity identified: " + activity.getLabel());
-			finalList.add("Activity identified: "+activity.getLabel());
-			return true;
-		}
 		if(activity.isExhausted(curTime)) {
 			shrink(curTime);
 			System.out.println("Time Exhausted for: " + activity.getLabel());
-			finalList.add("Time Exhausted for: "+activity.getLabel());
+//			finalList.add("Time Exhausted for: "+activity.getLabel());
+			return true;
+		}
+		if(activity.isAsserted()) {
+			ontologyManager.clearDisabledProperties();
+			if(ontologyManager.isPropertiesEmpty()) {
+				shrink(curTime);
+				finalList.add("Activity identified: " + activity.getLabel() + curTime);
+			}
+			System.out.println("Activity identified: " + activity.getLabel());
 			return true;
 		}
 		if(activity.getEndTime() >= endTime) {
