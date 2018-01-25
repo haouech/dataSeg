@@ -90,7 +90,7 @@ public class OntologyManager {
 			}
 		}
 		String query = createQuery();
-		System.out.println("Query: " + query);
+		//System.out.println("Query: " + query);
 		Set<OWLClass> equivalentClasses = queryEquivalentClasses(query, ontology);
 		if(equivalentClasses.size() > 0) {
 			OWLClass c = equivalentClasses.iterator().next();

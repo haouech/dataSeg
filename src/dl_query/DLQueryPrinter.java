@@ -32,7 +32,7 @@ public class DLQueryPrinter {
      */
     public Set<OWLClass> getSubClasses(String query) {
         if (query.length() == 0) {
-            System.out.println("No class expression specified");
+           // System.out.println("No class expression specified");
             return new HashSet<OWLClass>();
         } else {
             try {
@@ -62,7 +62,7 @@ public class DLQueryPrinter {
      */
     public Set<OWLClass> getEquivalentClasses(String query) {
         if (query.length() == 0) {
-            System.out.println("No class expression specified");
+           // System.out.println("No class expression specified");
             return new HashSet<OWLClass>();
         }
         try {

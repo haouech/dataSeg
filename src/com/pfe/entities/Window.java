@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.pfe.ActivityManager;
 import com.pfe.OntologyManager;
+import com.pfe.TimeManager;
 import com.pfe.entities.Activity;
 
 import org.semanticweb.owlapi.model.OWLClass;
@@ -115,17 +116,22 @@ public class Window {
 		}
 		if(activity.isExhausted(curTime)) {
 			shrink(curTime);
-			System.out.println("Time Exhausted for: " + activity.getLabel());
-//			finalList.add("Time Exhausted for: "+activity.getLabel());
+			System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" Time Exhausted for: " + activity.getLabel()+"************");
+//			System.out.println("Time Exhausted for: " + activity.getLabel());
+			finalList.add("Time Exhausted for: "+activity.getLabel());
 			return true;
 		}
 		if(activity.isAsserted()) {
 			ontologyManager.clearDisabledProperties();
 			if(ontologyManager.isPropertiesEmpty()) {
 				shrink(curTime);
-				finalList.add("Activity identified: " + activity.getLabel() + curTime);
+				System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" End of activity: " + activity.getLabel()+"************");
+//				System.out.println("End of activity: " + activity.getLabel());
+				finalList.add("End of activity: " + activity.getLabel() + curTime);
+				return true;
 			}
-			System.out.println("Activity identified: " + activity.getLabel());
+//			System.out.println("**********time : " + TimeManager.getInstance().getCurrentTime()+" Current activity is: " + activity.getLabel()+"************");
+//			System.out.println("Current activity is: " + activity.getLabel());
 			return true;
 		}
 		if(activity.getEndTime() >= endTime) {

@@ -24,11 +24,11 @@ public class SegmentationManager {
 	}
 	
 	public void recognizeADL() {
-		int i=1;
+		int i=0;
 		Window initWindow = new Window(timeManager.getCurrentTime());
 		Window currentWindow = initWindow ;	
 		Map<Window,Set<Activity>> windowToActivitiesMap = new HashMap<>();
-		
+		System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
 		currentWindow.setActive(true);
 		while (timeManager.isStillRunning()) 
 		{
@@ -40,21 +40,21 @@ public class SegmentationManager {
 				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
 				if(ReasoningMode.on_sensor.equals(currentWindow.getReasoningMode()) 
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
+//					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 					res = doOntologicalAR(currentWindow);
-					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
-					for(Activity a : res) {
-						System.out.println(a.getLabel());
-					}
+//					for(Activity a : res) {
+//						System.out.println(a.getLabel());
+//					}
 				}
 				else if(ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode()) 
 						&& timeManager.isInterval())
 				{
+					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 					res = doOntologicalAR(currentWindow);
 //					activitiesForCurrentWindow.addAll(res);
-					System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
-					for(Activity a : res) {
-						System.out.println(a.getLabel());
-					}
+//					for(Activity a : res) {
+//						System.out.println(a.getLabel());
+//					}
 				}
 				timeManager.advanceTime();
 				
@@ -62,12 +62,12 @@ public class SegmentationManager {
 			activitiesForCurrentWindow.addAll(res);
 			if(ReasoningMode.on_expiry.equals(currentWindow.getReasoningMode())) 
 			{
+				System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
 				res = doOntologicalAR(currentWindow);
 				activitiesForCurrentWindow.addAll(res);
-				System.out.println("**********time : " + timeManager.getCurrentTime()+"************");
-				for(Activity a : res) {
-					System.out.println(a.getLabel());
-				}
+//				for(Activity a : res) {
+//					System.out.println(a.getLabel());
+//				}
 			}
 //			discardPreviousSensorActivation();
 			currentWindow.setActive(false);
@@ -75,8 +75,9 @@ public class SegmentationManager {
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
-			System.out.println("fentre "+ i);
 			i++;
+			System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
+			//System.out.println("start fenetre "+ i);
 		}
 		dataManager.close();
 	}
@@ -93,7 +94,7 @@ public class SegmentationManager {
 			if (currentActivity.isSpecific()) 
 			{
 				// if not shrinkable add identified activities to final list here
-				System.out.println("One possible activity identified");
+				//System.out.println("One possible activity identified");
 				if (!w.isShrinkable())
 				{
 					if(currentActivity.isAsserted()) 
@@ -108,14 +109,14 @@ public class SegmentationManager {
 					}
 				}
 				if(!w.attemptShrink(currentActivity, timeManager.getCurrentTime())) {
-					System.out.println("more sensor data needed");
+					//System.out.println("more sensor data needed");
 					w.attemptExpand(currentActivity);
 				}
 			} 
 			else 
 			{
-				System.out.println("Activity not specific");
-				System.out.println("more sensor data needed");
+				//System.out.println(currentActivity + " Activity not specific");
+				//System.out.println("more sensor data needed");
 				w.attemptExpand(currentActivity);
 			}
 		} 
