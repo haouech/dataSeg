@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.semanticweb.owlapi.model.OWLClass;
+
 import com.pfe.entities.Window;
 
 import com.pfe.entities.Activity;
@@ -109,12 +111,29 @@ public class SegmentationManager {
 		Activity maxActivity = null;
 		int m = 0;
 		for(Activity a : list) {
-			if(m < a.getDuration()) {
-				m = a.getDuration();
+			int curDuration = a.getDuration();
+			if(!a.isSpecific()) {
+				curDuration = getMaxChildrenDuration(a);
+			}
+			if(m < curDuration) {
+				m = curDuration;
 				maxActivity = a;
 			}
 		}
 		return maxActivity;
+	}
+	
+	private int getMaxChildrenDuration(Activity activity) {
+		Set<OWLClass> children = ontologyManager.getActivitySubClasses(activity);
+		int maxDuration = 0;
+		ActivityManager activityManager = ActivityManager.getInstance();
+		for(OWLClass c : children) {
+			if(ontologyManager.isSpecific(c)) {
+				String label = c.getIRI().getFragment();
+				maxDuration = Math.max(maxDuration, activityManager.getLength(label));
+			}
+		}
+		return maxDuration;
 	}
 
 }

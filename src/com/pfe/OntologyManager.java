@@ -105,13 +105,18 @@ public class OntologyManager {
 		for(OWLClass c : subClasses) {
 			Activity activity = new Activity(c.getIRI().getFragment());
 			activity.setStartTime(windowStartTime);
-			NodeSet<OWLClass> classes = reasoner.getSubClasses(c, false);
-			if(classes.getFlattened().size() == 1) {
-				activity.setSpecific(true);
-			}
+			activity.setSpecific(isSpecific(c));
 			activities.add(activity);
 		}
 		return activities;		
+	}
+	
+	public boolean isSpecific(OWLClass c) {
+		NodeSet<OWLClass> classes = reasoner.getSubClasses(c, false);
+		if(classes.getFlattened().size() == 1) {
+			return true;
+		}
+		return false;
 	}
 	
 	private Set<OWLClass> querySubClasses(String query, OWLOntology ontology2) {
@@ -194,8 +199,8 @@ public class OntologyManager {
 	}
 	
 	public Set<OWLClass> getActivitySubClasses(Activity activity) {
-		OWLClass classe = factory.getOWLClass(IRI.create(documentIRI + activity.getLabel()));
-		return reasoner.getSubClasses(classe, true).getFlattened();
+		OWLClass classe = factory.getOWLClass(IRI.create(documentIRI + "#" + activity.getLabel()));
+		return reasoner.getSubClasses(classe, false).getFlattened();
 	}
 	
 	public void clearData() {
