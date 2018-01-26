@@ -36,10 +36,10 @@ public class OntologyManager {
 	private OWLDataFactory factory;
 	private Reasoner reasoner;
 	
-	private Map<String, String> unique_properties = new HashMap<String, String>();
-	private Set<String> properties = new HashSet<String>();
+	public Map<String, String> unique_properties = new HashMap<String, String>();
+	public Set<String> properties = new HashSet<String>();
 	
-	private List<String> disabledProperties = new ArrayList<String>();
+	public List<String> disabledProperties = new ArrayList<String>();
 	
 	final private String OWL_FILE_KEY = "owlfilename";
 	final private String documentIRI = "http://www.semanticweb.org/asma/ontologies/2018/0/Activities";

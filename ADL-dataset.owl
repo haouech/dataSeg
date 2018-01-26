@@ -115,9 +115,33 @@
     
 
 
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Breakfast -->
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Breakfast">
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Eating -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Eating">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -140,16 +164,34 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Toaster"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -159,30 +201,6 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cabinet">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#PIR"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Magnetic"/>
     </owl:Class>
     
 
@@ -283,44 +301,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#LivingADL">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#ADLActivity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Lunch -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Lunch">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cupboard"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasMagnetic"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Fridge"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#KitchenADL"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasElectric"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Microwave"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#hasPIR"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Cooktop"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 

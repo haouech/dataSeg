@@ -131,6 +131,9 @@ public class Window {
 		if(activity.isAsserted()) {
 			if(!asserted) {
 				asserted = true;
+				if(timeManager.getCurrentTime() == 38503) {
+					System.err.println();
+				}
 				Logger.write(timeManager.getCurrentTime(), "Start of activity: " + activity.getLabel());
 			}
 			ontologyManager.clearDisabledProperties();

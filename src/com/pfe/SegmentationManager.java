@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 
 import com.pfe.entities.Window;
@@ -27,6 +29,11 @@ public class SegmentationManager {
 	}
 	
 	public void recognizeADL() {
+
+		OWLClass classe = OWLManager.createOWLOntologyManager().getOWLDataFactory().getOWLClass(IRI.create(
+				"http://www.semanticweb.org/asma/ontologies/2018/0/Activities#Lunch" ));
+		ontologyManager.isSpecific(classe);
+		
 		Logger.init();
 		int i=0;
 		Window initWindow = new Window(timeManager.getCurrentTime());
@@ -78,15 +85,13 @@ public class SegmentationManager {
 	public List<Activity> doOntologicalAR(Window w) {
 		List<Activity> list;
 		list = ontologyManager.callOntology(w);
-		if(timeManager.getCurrentTime() == 73167) {
-			System.err.println();
-		}
 		if(list.isEmpty()) {
 			return list;
 		}
 		if(list.get(0).getLabel().equals("Nothing")) {
 			w.updateDataSet();
-			ontologyManager.clearDisabledProperties();;
+			ontologyManager.clearDisabledProperties();
+			w.setStartTime(timeManager.getCurrentTime());
 			list = ontologyManager.callOntology(w);
 		}
 		if (list.size() == 1) {
