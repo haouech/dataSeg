@@ -1,5 +1,6 @@
 package com.pfe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,11 +34,17 @@ public class SegmentationManager {
 		while (timeManager.isStillRunning()) 
 		{
 			Set<Activity> activitiesForCurrentWindow = new HashSet<>();
-			List<Activity> res = null;
+			List<Activity> res = new ArrayList<>();
 			while (timeManager.isStillRunning() && currentWindow.getEndTime() > timeManager.getCurrentTime())
 			{
 				//Lecture du dataSet 
-				dataManager.readLine(timeManager.getCurrentTime(), currentWindow);
+				if(!dataManager.readLine(timeManager.getCurrentTime(), currentWindow)) {
+					timeManager.advanceTime();
+					continue;
+				}
+				if(timeManager.getCurrentTime() > 73167) {
+					System.err.println();
+				}
 				if(ReasoningMode.on_sensor.equals(currentWindow.getReasoningMode()) 
 						|| ReasoningMode.at_intervals.equals(currentWindow.getReasoningMode())) {
 					res = doOntologicalAR(currentWindow);
@@ -58,6 +65,7 @@ public class SegmentationManager {
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
 			currentWindow.setActive(true);
+//			System.err.println(i);
 			i++;
 //			System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
 			//System.out.println("start fenetre "+ i);
@@ -68,8 +76,16 @@ public class SegmentationManager {
 	public List<Activity> doOntologicalAR(Window w) {
 		List<Activity> list;
 		list = ontologyManager.callOntology(w);
+		if(timeManager.getCurrentTime() == 73167) {
+			System.err.println();
+		}
 		if(list.isEmpty()) {
 			return list;
+		}
+		if(list.get(0).getLabel().equals("Nothing")) {
+			w.updateDataSet();
+			ontologyManager.clearDisabledProperties();;
+			list = ontologyManager.callOntology(w);
 		}
 		if (list.size() == 1) {
 			Activity currentActivity = list.get(0);

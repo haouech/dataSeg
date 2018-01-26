@@ -90,6 +90,7 @@ public class Window {
 	private TimeManager timeManager;
 	
 	private boolean asserted;
+	private List<String> newDataSet;
 	
 	public Window() {
 		this.startTime = 0; 
@@ -108,6 +109,7 @@ public class Window {
 		ontologyManager = OntologyManager.getInstance();
 		timeManager = TimeManager.getInstance();
 		this.asserted = false;
+		this.newDataSet = new ArrayList<String>();
 	}
 	public Window(int start) {
 		this();
@@ -289,6 +291,18 @@ public class Window {
 	
 	public void addSensor(String sensor) {
 		sensorDataSet.add(sensor);
+	}
+	
+	public void setNewDataSet(List<String> newDataSet) {
+		this.newDataSet = newDataSet;
+	}
+	
+	public boolean isUpdatable() {
+		return this.sensorDataSet != this.newDataSet;
+	}
+	
+	public void updateDataSet() {
+		this.sensorDataSet = this.newDataSet;
 	}
 
 }
