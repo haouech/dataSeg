@@ -27,6 +27,7 @@ import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 import dl_query.DLQueryEngine;
 import dl_query.DLQueryPrinter;
 import com.pfe.entities.Activity;
+import com.pfe.entities.ActivityFactory;
 import com.pfe.entities.Window;
 
 public class OntologyManager {
@@ -44,6 +45,8 @@ public class OntologyManager {
 	final private String OWL_FILE_KEY = "owlfilename";
 	final private String documentIRI = "http://www.semanticweb.org/asma/ontologies/2018/0/Activities";
 
+	private ActivityFactory activityBuilder = null;
+	
 	private static OntologyManager instance = null;
 	
 	private OntologyManager() {
@@ -64,6 +67,7 @@ public class OntologyManager {
 		}
 		factory = manager.getOWLDataFactory();
 		reasoner = new Reasoner(ontology);
+		activityBuilder = new ActivityFactory();
 	}
 	
 	public static OntologyManager getInstance() {
@@ -76,7 +80,7 @@ public class OntologyManager {
 	@SuppressWarnings("deprecation")
 	public List<Activity> callOntology(Window window) {
 		List<String> dataSet = window.getSet();
-		int windowStartTime = window.getStartTime();
+		int windowStartTime = window.getEffectiveStartTime();
 		List<Activity> activities = new ArrayList<Activity>();
 		for (String s : dataSet) {
 			String[] parts = s.split("@");
@@ -94,18 +98,13 @@ public class OntologyManager {
 		Set<OWLClass> equivalentClasses = queryEquivalentClasses(query, ontology);
 		if(equivalentClasses.size() > 0) {
 			OWLClass c = equivalentClasses.iterator().next();
-			Activity activity = new Activity(c.getIRI().getFragment());
-			activity.setStartTime(windowStartTime);
-			activity.setAsserted(true);
-			activity.setSpecific(true);
+			Activity activity = activityBuilder.makeEquivalentActivity(c, windowStartTime);
 			activities.add(activity);
 			return activities;
 		}
 		Set<OWLClass> subClasses = querySubClasses(query, ontology);
 		for(OWLClass c : subClasses) {
-			Activity activity = new Activity(c.getIRI().getFragment());
-			activity.setStartTime(windowStartTime);
-			activity.setSpecific(isSpecific(c));
+			Activity activity = activityBuilder.makePossibleActivity(c, windowStartTime);
 			activities.add(activity);
 		}
 		return activities;		

@@ -105,7 +105,7 @@ public class Window {
 		this.activityLabels = new ArrayList<>();
 		this.shrinkable = true;
 		this.expandable = true;
-		this.active = false;
+		this.active = true;
 		ontologyManager = OntologyManager.getInstance();
 		timeManager = TimeManager.getInstance();
 		this.asserted = false;

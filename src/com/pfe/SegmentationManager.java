@@ -73,7 +73,6 @@ public class SegmentationManager {
 			windowToActivitiesMap.put(currentWindow, activitiesForCurrentWindow);
 			ontologyManager.clearData();
 			currentWindow = new Window(timeManager.getCurrentTime());
-			currentWindow.setActive(true);
 //			System.err.println(i);
 			i++;
 //			System.out.println("**********time : " + timeManager.getCurrentTime()+" Start window "+ i+"************");
@@ -91,7 +90,7 @@ public class SegmentationManager {
 		if(list.get(0).getLabel().equals("Nothing")) {
 			w.updateDataSet();
 			ontologyManager.clearDisabledProperties();
-			w.setStartTime(timeManager.getCurrentTime());
+			w.setEffectiveStartTime(timeManager.getCurrentTime());
 			list = ontologyManager.callOntology(w);
 		}
 		if (list.size() == 1) {
